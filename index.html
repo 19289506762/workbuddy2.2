@@ -35,118 +35,35 @@
             --border: #e2e8f0;
             --radius: 16px;
             --radius-sm: 8px;
-            --shadow: 0 4px 20px rgba(0, 20, 40, 0.08);
-            --shadow-lg: 0 12px 48px rgba(0, 20, 40, 0.14);
-            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            --font: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+            --shadow: 0 4px 20px rgba(0,20,40,0.08);
+            --shadow-lg: 0 12px 48px rgba(0,20,40,0.14);
+            --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+            --font: 'Segoe UI','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
             --badge-bg: #e74c3c;
             --badge-text: #fff;
         }
-
-        /* 扩展配色主题 */
-        [data-theme="violet"] {
-            --primary: #6c5ce7;
-            --primary-light: #ede8ff;
-            --primary-dark: #5a4bd1;
-            --sidebar-bg: #2d1b4e;
-            --sidebar-hover: #3d2a63;
-            --sidebar-active: #4d3a7a;
-        }
-        [data-theme="emerald"] {
-            --primary: #00b894;
-            --primary-light: #e0f7ec;
-            --primary-dark: #00997a;
-            --sidebar-bg: #0d3b2e;
-            --sidebar-hover: #1a4d3d;
-            --sidebar-active: #286052;
-        }
-        [data-theme="coral"] {
-            --primary: #e17055;
-            --primary-light: #fdedea;
-            --primary-dark: #d35a3f;
-            --sidebar-bg: #4a1f18;
-            --sidebar-hover: #632d24;
-            --sidebar-active: #7e3d31;
-        }
-        [data-theme="ocean"] {
-            --primary: #0984e3;
-            --primary-light: #e3f0fd;
-            --primary-dark: #0770c4;
-            --sidebar-bg: #0a2a4a;
-            --sidebar-hover: #12406a;
-            --sidebar-active: #1a578a;
-        }
-        [data-theme="sunset"] {
-            --primary: #fd79a8;
-            --primary-light: #ffe8f0;
-            --primary-dark: #e85a85;
-            --sidebar-bg: #4a1a2e;
-            --sidebar-hover: #662a42;
-            --sidebar-active: #823a56;
-        }
-
+        [data-theme="violet"] { --primary:#6c5ce7; --primary-light:#ede8ff; --primary-dark:#5a4bd1; --sidebar-bg:#2d1b4e; --sidebar-hover:#3d2a63; --sidebar-active:#4d3a7a; }
+        [data-theme="emerald"] { --primary:#00b894; --primary-light:#e0f7ec; --primary-dark:#00997a; --sidebar-bg:#0d3b2e; --sidebar-hover:#1a4d3d; --sidebar-active:#286052; }
+        [data-theme="coral"] { --primary:#e17055; --primary-light:#fdedea; --primary-dark:#d35a3f; --sidebar-bg:#4a1f18; --sidebar-hover:#632d24; --sidebar-active:#7e3d31; }
+        [data-theme="ocean"] { --primary:#0984e3; --primary-light:#e3f0fd; --primary-dark:#0770c4; --sidebar-bg:#0a2a4a; --sidebar-hover:#12406a; --sidebar-active:#1a578a; }
+        [data-theme="sunset"] { --primary:#fd79a8; --primary-light:#ffe8f0; --primary-dark:#e85a85; --sidebar-bg:#4a1a2e; --sidebar-hover:#662a42; --sidebar-active:#823a56; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: var(--font);
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
+        body { font-family:var(--font); background:var(--bg); color:var(--text); min-height:100vh; }
         ::-webkit-scrollbar { width:5px; height:5px; }
         ::-webkit-scrollbar-thumb { background:#c5cdd8; border-radius:10px; }
 
         /* ===== 登录 ===== */
-        .login-page {
-            display:flex; align-items:center; justify-content:center;
-            min-height:100vh;
-            background:linear-gradient(135deg, #e8edf3, #d5dde6);
-            padding:20px;
-        }
-        .login-box {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:40px 48px;
-            max-width:440px;
-            width:100%;
-            box-shadow:var(--shadow-lg);
-            animation:modalSlide 0.4s ease;
-        }
+        .login-page { display:flex; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(135deg,#e8edf3,#d5dde6); padding:20px; }
+        .login-box { background:var(--card); border-radius:var(--radius); padding:40px 48px; max-width:440px; width:100%; box-shadow:var(--shadow-lg); animation:modalSlide 0.4s ease; }
         .login-box .logo { text-align:center; margin-bottom:28px; }
         .login-box .logo .logo-icon { font-size:48px; display:block; margin-bottom:8px; }
         .login-box .logo h1 { font-size:22px; font-weight:700; }
         .login-box .logo p { font-size:13px; color:var(--text-light); }
         .login-box .form-group { margin-bottom:16px; }
         .login-box .form-group label { display:block; font-weight:600; font-size:12px; margin-bottom:4px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.4px; }
-        .login-box .form-group input,
-        .login-box .form-group select {
-            width:100%; padding:10px 14px;
-            border:1.5px solid var(--border);
-            border-radius:var(--radius-sm);
-            font-size:14px;
-            font-family:var(--font);
-            transition:all var(--transition);
-            background:#fafbfc;
-        }
-        .login-box .form-group input:focus,
-        .login-box .form-group select:focus {
-            outline:none;
-            border-color:var(--primary);
-            background:#fff;
-            box-shadow:0 0 0 4px rgba(59,140,255,0.06);
-        }
-        .login-box .btn {
-            width:100%; padding:12px;
-            border-radius:var(--radius-sm);
-            border:none;
-            cursor:pointer;
-            font-weight:700;
-            font-size:15px;
-            transition:all var(--transition);
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            gap:8px;
-        }
+        .login-box .form-group input,.login-box .form-group select { width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:14px; font-family:var(--font); transition:all var(--transition); background:#fafbfc; }
+        .login-box .form-group input:focus,.login-box .form-group select:focus { outline:none; border-color:var(--primary); background:#fff; box-shadow:0 0 0 4px rgba(59,140,255,0.06); }
+        .login-box .btn { width:100%; padding:12px; border-radius:var(--radius-sm); border:none; cursor:pointer; font-weight:700; font-size:15px; transition:all var(--transition); display:inline-flex; align-items:center; justify-content:center; gap:8px; }
         .login-box .btn-primary { background:var(--primary); color:#fff; }
         .login-box .btn-primary:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 4px 16px rgba(59,140,255,0.35); }
         .login-box .btn-outline-light { background:transparent; border:1.5px solid var(--border); color:var(--text-secondary); }
@@ -162,180 +79,37 @@
         /* ===== 应用布局 ===== */
         .app-container { display:none; min-height:100vh; }
         .app-container.active { display:flex; }
-
-        .sidebar {
-            width:240px; min-width:240px;
-            background:var(--sidebar-bg);
-            color:var(--sidebar-text);
-            display:flex;
-            flex-direction:column;
-            position:fixed;
-            top:0; left:0; bottom:0;
-            z-index:100;
-            transition:transform var(--transition);
-            box-shadow:2px 0 30px rgba(0,0,0,0.20);
-        }
-        .sidebar-logo {
-            padding:22px 20px 18px;
-            display:flex;
-            align-items:center;
-            gap:12px;
-            border-bottom:1px solid rgba(255,255,255,0.06);
-            cursor:pointer;
-            transition:background var(--transition);
-        }
+        .sidebar { width:240px; min-width:240px; background:var(--sidebar-bg); color:var(--sidebar-text); display:flex; flex-direction:column; position:fixed; top:0; left:0; bottom:0; z-index:100; transition:transform var(--transition); box-shadow:2px 0 30px rgba(0,0,0,0.20); }
+        .sidebar-logo { padding:22px 20px 18px; display:flex; align-items:center; gap:12px; border-bottom:1px solid rgba(255,255,255,0.06); cursor:pointer; transition:background var(--transition); }
         .sidebar-logo:hover { background:rgba(255,255,255,0.03); }
-        .sidebar-logo .logo-icon {
-            width:42px; height:42px;
-            border-radius:12px;
-            background:linear-gradient(135deg, var(--primary), #6aabff);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:22px;
-            color:#fff;
-            flex-shrink:0;
-            box-shadow:0 2px 12px rgba(59,140,255,0.3);
-        }
+        .sidebar-logo .logo-icon { width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg,var(--primary),#6aabff); display:flex; align-items:center; justify-content:center; font-size:22px; color:#fff; flex-shrink:0; box-shadow:0 2px 12px rgba(59,140,255,0.3); }
         .sidebar-logo .logo-text { font-size:17px; font-weight:700; color:#fff; letter-spacing:0.3px; }
         .sidebar-logo .logo-sub { font-size:10px; color:#6a7f94; font-weight:400; }
-
-        .sidebar-nav {
-            flex:1;
-            overflow-y:auto;
-            padding:10px 8px;
-            display:flex;
-            flex-direction:column;
-            gap:2px;
-        }
-        .sidebar-nav .nav-section {
-            font-size:10px;
-            text-transform:uppercase;
-            letter-spacing:1.2px;
-            color:#4d6278;
-            padding:14px 14px 6px;
-            font-weight:700;
-        }
-        .sidebar-nav .nav-item {
-            display:flex;
-            align-items:center;
-            gap:10px;
-            padding:10px 14px;
-            border-radius:var(--radius-sm);
-            cursor:pointer;
-            transition:all var(--transition);
-            font-size:13px;
-            font-weight:500;
-            color:var(--sidebar-text);
-            text-decoration:none;
-            position:relative;
-            user-select:none;
-        }
+        .sidebar-nav { flex:1; overflow-y:auto; padding:10px 8px; display:flex; flex-direction:column; gap:2px; }
+        .sidebar-nav .nav-section { font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:#4d6278; padding:14px 14px 6px; font-weight:700; }
+        .sidebar-nav .nav-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:var(--radius-sm); cursor:pointer; transition:all var(--transition); font-size:13px; font-weight:500; color:var(--sidebar-text); text-decoration:none; position:relative; user-select:none; }
         .sidebar-nav .nav-item:hover { background:var(--sidebar-hover); color:var(--sidebar-text-active); }
-        .sidebar-nav .nav-item.active {
-            background:var(--sidebar-active);
-            color:var(--sidebar-text-active);
-            font-weight:600;
-            box-shadow:inset 3px 0 0 var(--primary);
-        }
+        .sidebar-nav .nav-item.active { background:var(--sidebar-active); color:var(--sidebar-text-active); font-weight:600; box-shadow:inset 3px 0 0 var(--primary); }
         .sidebar-nav .nav-item .nav-icon { font-size:17px; width:24px; text-align:center; flex-shrink:0; }
-        .sidebar-nav .nav-item .badge {
-            margin-left:auto;
-            background:var(--badge-bg);
-            color:var(--badge-text);
-            font-size:9px;
-            padding:2px 8px;
-            border-radius:12px;
-            font-weight:700;
-            display:none;
-        }
+        .sidebar-nav .nav-item .badge { margin-left:auto; background:var(--badge-bg); color:var(--badge-text); font-size:9px; padding:2px 8px; border-radius:12px; font-weight:700; display:none; }
         .sidebar-nav .nav-item .badge.show { display:inline-block; }
-
-        .sidebar-footer {
-            padding:10px 14px;
-            border-top:1px solid rgba(255,255,255,0.06);
-            display:flex;
-            align-items:center;
-            gap:10px;
-            cursor:pointer;
-            border-radius:var(--radius-sm);
-            margin:4px 10px 12px;
-            transition:all var(--transition);
-        }
+        .sidebar-footer { padding:10px 14px; border-top:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; gap:10px; cursor:pointer; border-radius:var(--radius-sm); margin:4px 10px 12px; transition:all var(--transition); }
         .sidebar-footer:hover { background:var(--sidebar-hover); }
-        .sidebar-footer .avatar {
-            width:34px; height:34px;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-weight:700;
-            color:#fff;
-            font-size:14px;
-            flex-shrink:0;
-            background-size:cover;
-            background-position:center;
-            background-color:#6c5ce7;
-            overflow:hidden;
-            border:2px solid rgba(255,255,255,0.2);
-        }
+        .sidebar-footer .avatar { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; font-size:14px; flex-shrink:0; background-size:cover; background-position:center; background-color:#6c5ce7; overflow:hidden; border:2px solid rgba(255,255,255,0.2); }
         .sidebar-footer .avatar:hover { transform:scale(1.05); }
         .sidebar-footer .avatar img { width:100%; height:100%; object-fit:cover; }
         .sidebar-footer .user-info { font-size:13px; color:#d5dce5; line-height:1.3; flex:1; cursor:pointer; }
         .sidebar-footer .user-info span { display:block; font-size:10px; color:#6a7f94; }
-        .sidebar-footer .logout-btn {
-            background:rgba(255,255,255,0.08);
-            border:none;
-            color:var(--sidebar-text);
-            padding:4px 10px;
-            border-radius:12px;
-            cursor:pointer;
-            font-size:11px;
-            transition:all var(--transition);
-        }
+        .sidebar-footer .logout-btn { background:rgba(255,255,255,0.08); border:none; color:var(--sidebar-text); padding:4px 10px; border-radius:12px; cursor:pointer; font-size:11px; transition:all var(--transition); }
         .sidebar-footer .logout-btn:hover { background:rgba(255,255,255,0.16); color:#fff; }
-
-        .main-content {
-            margin-left:240px;
-            flex:1;
-            display:flex;
-            flex-direction:column;
-            min-height:100vh;
-        }
+        .main-content { margin-left:240px; flex:1; display:flex; flex-direction:column; min-height:100vh; }
 
         /* ===== 顶部栏 ===== */
-        .topbar {
-            background:rgba(255,255,255,0.85);
-            backdrop-filter:blur(12px);
-            padding:14px 28px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            border-bottom:1px solid var(--border);
-            position:sticky;
-            top:0;
-            z-index:50;
-            gap:12px;
-            flex-wrap:wrap;
-        }
+        .topbar { background:rgba(255,255,255,0.85); backdrop-filter:blur(12px); padding:14px 28px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50; gap:12px; flex-wrap:wrap; }
         .topbar .page-title { font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.3px; }
         .topbar .breadcrumb { font-size:12px; color:var(--text-light); display:flex; gap:6px; align-items:center; }
         .topbar-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-
-        .btn {
-            padding:8px 18px;
-            border-radius:24px;
-            border:none;
-            cursor:pointer;
-            font-weight:600;
-            font-size:13px;
-            transition:all var(--transition);
-            display:inline-flex;
-            align-items:center;
-            gap:6px;
-            white-space:nowrap;
-            letter-spacing:0.2px;
-        }
+        .btn { padding:8px 18px; border-radius:24px; border:none; cursor:pointer; font-weight:600; font-size:13px; transition:all var(--transition); display:inline-flex; align-items:center; gap:6px; white-space:nowrap; letter-spacing:0.2px; }
         .btn-primary { background:var(--primary); color:#fff; }
         .btn-primary:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 4px 16px rgba(59,140,255,0.35); }
         .btn-outline { background:#fff; border:1.5px solid var(--border); color:var(--text); }
@@ -347,24 +121,14 @@
         .btn-success:hover { background:#27ae60; box-shadow:0 4px 16px rgba(46,204,113,0.35); }
         .btn-danger { background:var(--danger); color:#fff; }
         .btn-danger:hover { background:#c0392b; }
-
         .content-area { padding:24px 28px 40px; flex:1; }
         .page { display:none; animation:fadeSlide 0.35s ease; }
         .page.active { display:block; }
         @keyframes fadeSlide { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
-
-        .card {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:20px 22px;
-            box-shadow:var(--shadow);
-            border:1px solid var(--border);
-            transition:all var(--transition);
-        }
+        .card { background:var(--card); border-radius:var(--radius); padding:20px 22px; box-shadow:var(--shadow); border:1px solid var(--border); transition:all var(--transition); }
         .card:hover { box-shadow:var(--shadow-lg); }
         .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:8px; }
         .card-title { font-weight:700; font-size:16px; color:var(--text); letter-spacing:-0.2px; display:flex; align-items:center; gap:8px; }
-
         .flex-between { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
         .flex-wrap { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
         .mt-12 { margin-top:12px; }
@@ -373,148 +137,35 @@
         .text-muted { color:var(--text-light); font-size:12px; }
         .w-full { width:100%; }
         .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-
-        /* ===== 主题选择器 ===== */
         .theme-picker { position:relative; display:inline-block; }
         .theme-toggle-btn { cursor:pointer; }
-        .theme-panel {
-            position:absolute;
-            top:110%; right:0;
-            background:#fff;
-            border:1px solid var(--border);
-            border-radius:8px;
-            box-shadow:var(--shadow-lg);
-            padding:6px 0;
-            min-width:120px;
-            z-index:100;
-            display:none;
-        }
-        .theme-panel .theme-option {
-            padding:8px 16px;
-            cursor:pointer;
-            font-size:13px;
-            transition:background 0.15s;
-        }
+        .theme-panel { position:absolute; top:110%; right:0; background:#fff; border:1px solid var(--border); border-radius:8px; box-shadow:var(--shadow-lg); padding:6px 0; min-width:120px; z-index:100; display:none; }
+        .theme-panel .theme-option { padding:8px 16px; cursor:pointer; font-size:13px; transition:background 0.15s; }
         .theme-panel .theme-option:hover { background:var(--primary-light); color:var(--primary); }
         .theme-panel .theme-option:active { background:var(--primary); color:#fff; }
-
-        /* ===== 快速添加 ===== */
         .quick-add-wrapper { position:relative; display:inline-block; }
-        .quick-add-menu {
-            position:absolute;
-            top:110%; right:0;
-            background:#fff;
-            border:1px solid var(--border);
-            border-radius:8px;
-            box-shadow:var(--shadow-lg);
-            padding:6px 0;
-            min-width:160px;
-            z-index:100;
-            display:none;
-        }
-        .quick-add-menu .qa-item {
-            padding:8px 16px;
-            cursor:pointer;
-            font-size:13px;
-            transition:background 0.15s;
-        }
+        .quick-add-menu { position:absolute; top:110%; right:0; background:#fff; border:1px solid var(--border); border-radius:8px; box-shadow:var(--shadow-lg); padding:6px 0; min-width:160px; z-index:100; display:none; }
+        .quick-add-menu .qa-item { padding:8px 16px; cursor:pointer; font-size:13px; transition:background 0.15s; }
         .quick-add-menu .qa-item:hover { background:var(--primary-light); color:var(--primary); }
-
-        /* ===== 搜索框 ===== */
-        .search-box {
-            display:flex;
-            align-items:center;
-            gap:8px;
-            background:#f5f7fa;
-            border-radius:24px;
-            padding:7px 16px;
-            border:1.5px solid transparent;
-            transition:all var(--transition);
-            flex:1;
-            max-width:280px;
-        }
+        .search-box { display:flex; align-items:center; gap:8px; background:#f5f7fa; border-radius:24px; padding:7px 16px; border:1.5px solid transparent; transition:all var(--transition); flex:1; max-width:280px; }
         .search-box:focus-within { border-color:var(--primary); background:#fff; box-shadow:0 0 0 4px rgba(59,140,255,0.08); }
         .search-box input { border:none; background:transparent; outline:none; font-size:13px; width:100%; color:var(--text); }
         .search-box .search-icon { color:var(--text-light); font-size:14px; }
-
-        /* ===== 模态框 ===== */
-        .modal-overlay {
-            position:fixed; inset:0;
-            background:rgba(0,0,0,0.40);
-            z-index:200;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            animation:fadeIn 0.2s ease;
-            backdrop-filter:blur(4px);
-        }
+        .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.40); z-index:200; display:flex; align-items:center; justify-content:center; animation:fadeIn 0.2s ease; backdrop-filter:blur(4px); }
         @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-        .modal {
-            background:#fff;
-            border-radius:var(--radius);
-            padding:28px 32px;
-            width:92%;
-            max-width:680px;
-            box-shadow:var(--shadow-lg);
-            animation:modalSlide 0.3s ease;
-            max-height:85vh;
-            overflow-y:auto;
-        }
+        .modal { background:#fff; border-radius:var(--radius); padding:28px 32px; width:92%; max-width:680px; box-shadow:var(--shadow-lg); animation:modalSlide 0.3s ease; max-height:85vh; overflow-y:auto; }
         .modal-wide { max-width:960px; }
         @keyframes modalSlide { from { transform:translateY(30px); opacity:0; } to { transform:translateY(0); opacity:1; } }
         .modal h3 { font-size:20px; margin-bottom:18px; letter-spacing:-0.3px; font-weight:700; }
         .modal .form-group { margin-bottom:14px; }
         .modal .form-group label { display:block; font-weight:600; font-size:12px; margin-bottom:4px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.4px; }
-        .modal .form-group input,
-        .modal .form-group select,
-        .modal .form-group textarea {
-            width:100%; padding:10px 14px;
-            border:1.5px solid var(--border);
-            border-radius:var(--radius-sm);
-            font-size:14px;
-            font-family:var(--font);
-            transition:all var(--transition);
-            background:#fafbfc;
-        }
-        .modal .form-group input:focus,
-        .modal .form-group select:focus,
-        .modal .form-group textarea:focus {
-            outline:none;
-            border-color:var(--primary);
-            background:#fff;
-            box-shadow:0 0 0 4px rgba(59,140,255,0.06);
-        }
+        .modal .form-group input,.modal .form-group select,.modal .form-group textarea { width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:14px; font-family:var(--font); transition:all var(--transition); background:#fafbfc; }
+        .modal .form-group input:focus,.modal .form-group select:focus,.modal .form-group textarea:focus { outline:none; border-color:var(--primary); background:#fff; box-shadow:0 0 0 4px rgba(59,140,255,0.06); }
         .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:22px; flex-wrap:wrap; }
-
-        /* ===== 统计卡片 ===== */
-        .stats-grid {
-            display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
-            gap:16px;
-            margin-bottom:24px;
-        }
-        .stat-card {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:18px 20px;
-            border:1px solid var(--border);
-            display:flex;
-            align-items:center;
-            gap:14px;
-            transition:all var(--transition);
-            box-shadow:var(--shadow);
-            cursor:pointer;
-        }
+        .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; margin-bottom:24px; }
+        .stat-card { background:var(--card); border-radius:var(--radius); padding:18px 20px; border:1px solid var(--border); display:flex; align-items:center; gap:14px; transition:all var(--transition); box-shadow:var(--shadow); cursor:pointer; }
         .stat-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
-        .stat-icon {
-            width:46px; height:46px;
-            border-radius:12px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:20px;
-            flex-shrink:0;
-        }
+        .stat-icon { width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
         .stat-icon.blue { background:#e3edff; color:#3b8cff; }
         .stat-icon.green { background:#e2f7ec; color:#2ecc71; }
         .stat-icon.orange { background:#fef3e0; color:#f39c12; }
@@ -523,91 +174,27 @@
         .stat-info .stat-value { font-size:24px; font-weight:800; letter-spacing:-0.5px; color:var(--text); }
         .stat-info .stat-label { font-size:12px; color:var(--text-secondary); font-weight:500; }
         .stat-info .stat-sub { font-size:11px; color:var(--text-light); margin-top:2px; }
-
-        /* ===== 表格 ===== */
         .table-wrap { overflow-x:auto; border-radius:var(--radius); border:1px solid var(--border); background:var(--card); }
         table { width:100%; border-collapse:collapse; font-size:13px; }
-        table thead th {
-            background:#f8fafc;
-            padding:11px 14px;
-            text-align:left;
-            font-weight:600;
-            font-size:11px;
-            text-transform:uppercase;
-            letter-spacing:0.4px;
-            color:var(--text-secondary);
-            border-bottom:2px solid var(--border);
-            white-space:nowrap;
-        }
+        table thead th { background:#f8fafc; padding:11px 14px; text-align:left; font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:0.4px; color:var(--text-secondary); border-bottom:2px solid var(--border); white-space:nowrap; }
         table tbody td { padding:10px 14px; border-bottom:1px solid #f0f3f8; white-space:nowrap; vertical-align:middle; }
         table tbody tr:hover { background:#f8fafc; }
-
-        /* ===== 座次表 - 左右布局 ===== */
-        #unseatedListContainer .unseated-item {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:6px 10px;
-            margin:2px 0;
-            border-radius:6px;
-            background:#f8fafc;
-            border:1px solid var(--border);
-            cursor:grab;
-            transition:all var(--transition);
-            font-size:13px;
-        }
-        #unseatedListContainer .unseated-item:hover {
-            background:var(--primary-light);
-            border-color:var(--primary);
-            transform:translateX(4px);
-        }
+        #unseatedListContainer .unseated-item { display:flex; align-items:center; justify-content:space-between; padding:6px 10px; margin:2px 0; border-radius:6px; background:#f8fafc; border:1px solid var(--border); cursor:grab; transition:all var(--transition); font-size:13px; }
+        #unseatedListContainer .unseated-item:hover { background:var(--primary-light); border-color:var(--primary); transform:translateX(4px); }
         #unseatedListContainer .unseated-item .uname { font-weight:500; }
         #unseatedListContainer .unseated-item .uid { font-size:11px; color:var(--text-light); }
         #unseatedListContainer .unseated-item .ugender { font-size:11px; padding:0 6px; border-radius:10px; background:#eee; }
         #unseatedListContainer .unseated-item.dragging { opacity:0.4; transform:scale(0.95); }
-        .seat-item.drag-over {
-            border-color:var(--primary);
-            box-shadow:0 0 0 3px rgba(59,140,255,0.3);
-            transform:scale(1.05);
-        }
+        .seat-item.drag-over { border-color:var(--primary); box-shadow:0 0 0 3px rgba(59,140,255,0.3); transform:scale(1.05); }
         .seat-item.drag-from { opacity:0.4; }
         #unseatedListContainer::-webkit-scrollbar { width:4px; }
         #unseatedListContainer::-webkit-scrollbar-thumb { background:#c5cdd8; border-radius:4px; }
-        @media (max-width:768px) {
-            #page-seating > div:last-child { grid-template-columns:1fr !important; }
-        }
-
-        /* ===== 座次表核心 ===== */
+        @media (max-width:768px) { #page-seating > div:last-child { grid-template-columns:1fr !important; } }
         .seat-container { display:flex; flex-direction:column; align-items:center; gap:12px; width:100%; }
         .podium { background:#e8edf3; padding:8px 24px; border-radius:12px; font-weight:700; font-size:14px; color:var(--text-secondary); letter-spacing:2px; box-shadow:inset 0 -2px 0 #c5cdd8; width:fit-content; margin-bottom:4px; }
-        .seat-grid {
-            display:grid;
-            gap:6px 8px;
-            width:100%;
-            max-width:1100px;
-            grid-template-columns:repeat(11, 1fr);
-        }
+        .seat-grid { display:grid; gap:6px 8px; width:100%; max-width:1100px; grid-template-columns:repeat(11,1fr); }
         .seat-grid .seat-aisle { grid-column:span 1; min-width:12px; background:transparent; border:none; pointer-events:none; }
-        .seat-item {
-            border-radius:var(--radius-sm);
-            padding:10px 4px;
-            text-align:center;
-            border:2px solid var(--border);
-            transition:all var(--transition);
-            cursor:grab;
-            font-size:12px;
-            font-weight:500;
-            box-shadow:0 2px 6px rgba(0,0,0,0.04);
-            min-height:68px;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            gap:1px;
-            position:relative;
-            user-select:none;
-            background:var(--card);
-        }
+        .seat-item { border-radius:var(--radius-sm); padding:10px 4px; text-align:center; border:2px solid var(--border); transition:all var(--transition); cursor:grab; font-size:12px; font-weight:500; box-shadow:0 2px 6px rgba(0,0,0,0.04); min-height:68px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; position:relative; user-select:none; background:var(--card); }
         .seat-item:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
         .seat-item.dragging { opacity:0.5; transform:scale(0.95); }
         .seat-item .seat-name { font-weight:700; font-size:14px; color:#fff; }
@@ -615,38 +202,12 @@
         .seat-item .seat-gender-tag { font-size:7px; padding:1px 6px; border-radius:8px; background:rgba(255,255,255,0.2); color:#fff; position:absolute; top:2px; right:2px; }
         .seat-item.empty { background:#f5f7fa; border-style:dashed; color:var(--text-light); cursor:default; min-height:68px; border-color:#d5dde6; }
         .seat-item.empty .seat-name { color:#d0d5dd; font-weight:400; }
-        .seat-item.gender-male { background:linear-gradient(145deg, #3b8cff, #2a6fd4); border-color:#2a6fd4; }
-        .seat-item.gender-female { background:linear-gradient(145deg, #ff6b9d, #e84393); border-color:#e84393; }
-        .seat-item.gender-unknown { background:linear-gradient(145deg, #8e9db0, #6a7f94); border-color:#6a7f94; }
+        .seat-item.gender-male { background:linear-gradient(145deg,#3b8cff,#2a6fd4); border-color:#2a6fd4; }
+        .seat-item.gender-female { background:linear-gradient(145deg,#ff6b9d,#e84393); border-color:#e84393; }
+        .seat-item.gender-unknown { background:linear-gradient(145deg,#8e9db0,#6a7f94); border-color:#6a7f94; }
         .seat-group-label { font-weight:700; font-size:13px; color:var(--text-secondary); padding:10px 0 4px; letter-spacing:1px; border-bottom:2px solid var(--border); margin-bottom:4px; text-align:center; grid-column:1 / -1; }
-
-        /* ===== 课程表 ===== */
-        .schedule-grid {
-            display:grid;
-            grid-template-columns:70px repeat(7, 1fr);
-            gap:6px;
-            background:transparent;
-            border-radius:12px;
-            overflow:visible;
-        }
-        .schedule-cell {
-            background:#fff;
-            padding:8px 4px;
-            text-align:center;
-            font-size:11px;
-            font-weight:500;
-            min-height:58px;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            transition:all var(--transition);
-            border-radius:8px;
-            line-height:1.3;
-            cursor:default;
-            border:1px solid var(--border);
-            gap:2px;
-        }
+        .schedule-grid { display:grid; grid-template-columns:70px repeat(7,1fr); gap:6px; background:transparent; border-radius:12px; overflow:visible; }
+        .schedule-cell { background:#fff; padding:8px 4px; text-align:center; font-size:11px; font-weight:500; min-height:58px; display:flex; flex-direction:column; align-items:center; justify-content:center; transition:all var(--transition); border-radius:8px; line-height:1.3; cursor:default; border:1px solid var(--border); gap:2px; }
         .schedule-cell.clickable { cursor:pointer; }
         .schedule-cell.clickable:hover { background:#f0f4ff; border-color:var(--primary); transform:scale(1.02); box-shadow:0 4px 12px rgba(59,140,255,0.15); }
         .schedule-cell.header { background:#f8fafc; font-weight:700; font-size:12px; color:var(--text-secondary); letter-spacing:0.5px; border-color:#e8ecf2; }
@@ -672,36 +233,14 @@
         .schedule-cell.subject-tech { background:#e8f5e9; border-color:#c8e8d0; }
         .schedule-cell.subject-classmeeting { background:#fff8e1; border-color:#f5ecc8; }
         .schedule-cell.subject-selfstudy { background:#f5f5f5; border-color:#e8e8e8; }
-
-        /* ===== 作业管理 ===== */
-        .homework-stats {
-            display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-            gap:16px;
-            margin-bottom:24px;
-        }
-        .homework-stat-card {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:18px 20px;
-            border:1px solid var(--border);
-            box-shadow:var(--shadow);
-            transition:all var(--transition);
-        }
+        .homework-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:24px; }
+        .homework-stat-card { background:var(--card); border-radius:var(--radius); padding:18px 20px; border:1px solid var(--border); box-shadow:var(--shadow); transition:all var(--transition); }
         .homework-stat-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
         .homework-stat-card .hw-stat-value { font-size:28px; font-weight:800; color:var(--text); letter-spacing:-0.5px; }
         .homework-stat-card .hw-stat-label { font-size:13px; color:var(--text-secondary); font-weight:500; }
         .homework-stat-card .hw-stat-sub { font-size:12px; color:var(--text-light); margin-top:4px; }
-
         .homework-list { display:flex; flex-direction:column; gap:16px; }
-        .homework-item {
-            background:var(--card);
-            border-radius:var(--radius);
-            border:1px solid var(--border);
-            padding:20px 22px;
-            box-shadow:var(--shadow);
-            transition:all var(--transition);
-        }
+        .homework-item { background:var(--card); border-radius:var(--radius); border:1px solid var(--border); padding:20px 22px; box-shadow:var(--shadow); transition:all var(--transition); }
         .homework-item:hover { box-shadow:var(--shadow-lg); }
         .homework-item .hw-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
         .homework-item .hw-subject { font-weight:700; font-size:16px; color:var(--text); display:flex; align-items:center; gap:8px; }
@@ -718,158 +257,41 @@
         .homework-item .hw-dates { font-size:12px; color:var(--text-light); text-align:right; white-space:nowrap; }
         .homework-item .hw-title { font-size:16px; font-weight:600; color:var(--text); margin:4px 0 6px; }
         .homework-item .hw-desc { font-size:13px; color:var(--text-secondary); margin-bottom:10px; line-height:1.6; }
-        .homework-item .hw-stats {
-            display:flex;
-            align-items:center;
-            gap:20px;
-            flex-wrap:wrap;
-            padding:10px 0;
-            border-top:1px solid var(--border);
-            border-bottom:1px solid var(--border);
-            margin-bottom:10px;
-        }
+        .homework-item .hw-stats { display:flex; align-items:center; gap:20px; flex-wrap:wrap; padding:10px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:10px; }
         .homework-item .hw-stats .rate { font-size:20px; font-weight:800; color:var(--primary); }
         .homework-item .hw-stats .detail { font-size:13px; color:var(--text-secondary); }
         .homework-item .hw-stats .detail .num { font-weight:600; color:var(--text); }
         .homework-item .hw-stats .detail .num.danger { color:var(--danger); }
-
-        /* ===== 随机点名 ===== */
-        .random-pick {
-            text-align:center;
-            padding:30px 24px;
-            background:linear-gradient(145deg, #ffffff, #f8fafc);
-            border-radius:var(--radius);
-            border:1px solid var(--border);
-        }
-        .random-pick .display-name {
-            font-size:72px;
-            font-weight:800;
-            color:var(--text);
-            min-height:100px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            letter-spacing:4px;
-            transition:all 0.1s ease;
-            background:#f8fafc;
-            border-radius:20px;
-            margin:16px 0;
-            padding:20px;
-            border:2px dashed var(--border);
-        }
+        .random-pick { text-align:center; padding:30px 24px; background:linear-gradient(145deg,#ffffff,#f8fafc); border-radius:var(--radius); border:1px solid var(--border); }
+        .random-pick .display-name { font-size:72px; font-weight:800; color:var(--text); min-height:100px; display:flex; align-items:center; justify-content:center; letter-spacing:4px; transition:all 0.1s ease; background:#f8fafc; border-radius:20px; margin:16px 0; padding:20px; border:2px dashed var(--border); }
         .random-pick .display-name.rolling { color:var(--primary); border-color:var(--primary); background:var(--primary-light); animation:pulse 0.4s ease-in-out infinite alternate; }
         .random-pick .display-name.done { color:var(--success); border-color:var(--success); background:#e8faf0; animation:popIn 0.4s ease; }
-        @keyframes pulse { 0% { transform:scale(1); } 100% { transform:scale(1.03); } }
-        @keyframes popIn { 0% { transform:scale(0.8); opacity:0; } 70% { transform:scale(1.08); } 100% { transform:scale(1); opacity:1; } }
+        @keyframes pulse { 0%{transform:scale(1)} 100%{transform:scale(1.03)} }
+        @keyframes popIn { 0%{transform:scale(0.8);opacity:0} 70%{transform:scale(1.08)} 100%{transform:scale(1);opacity:1} }
         .random-pick .random-sub { font-size:14px; color:var(--text-secondary); margin:8px 0 4px; }
-        .random-pick .random-history {
-            display:flex;
-            flex-wrap:wrap;
-            gap:6px;
-            justify-content:center;
-            margin-top:12px;
-            padding:12px;
-            background:#f5f7fa;
-            border-radius:12px;
-            min-height:40px;
-        }
-        .random-pick .random-history .chip {
-            padding:4px 14px;
-            background:var(--card);
-            border-radius:16px;
-            border:1px solid var(--border);
-            font-size:12px;
-            font-weight:500;
-            color:var(--text-secondary);
-            display:inline-flex;
-            align-items:center;
-            gap:4px;
-        }
+        .random-pick .random-history { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:12px; padding:12px; background:#f5f7fa; border-radius:12px; min-height:40px; }
+        .random-pick .random-history .chip { padding:4px 14px; background:var(--card); border-radius:16px; border:1px solid var(--border); font-size:12px; font-weight:500; color:var(--text-secondary); display:inline-flex; align-items:center; gap:4px; }
         .random-pick .random-history .chip .idx { font-size:9px; color:var(--text-light); background:#eee; padding:0 6px; border-radius:8px; }
         .random-pick .random-history .chip.current { border-color:var(--success); background:#e8faf0; color:var(--success); font-weight:700; }
-
-        /* ===== 评语卡片 ===== */
-        .comment-card {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:20px 24px;
-            border:1px solid var(--border);
-            box-shadow:var(--shadow);
-            max-width:360px;
-            margin:0 auto;
-            position:relative;
-            transition:all var(--transition);
-        }
+        .comment-card { background:var(--card); border-radius:var(--radius); padding:20px 24px; border:1px solid var(--border); box-shadow:var(--shadow); max-width:360px; margin:0 auto; position:relative; transition:all var(--transition); }
         .comment-card .comment-label { font-size:10px; text-transform:uppercase; color:var(--text-light); letter-spacing:1px; font-weight:600; }
         .comment-card .comment-body { font-size:15px; line-height:1.7; margin:10px 0 6px; color:var(--text); }
         .comment-card .comment-sign { text-align:right; font-size:13px; color:var(--text-secondary); border-top:1px solid var(--border); padding-top:10px; margin-top:6px; }
-
-        /* ===== 班委 & 课代表 ===== */
-        .class-committee {
-            display:grid;
-            grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
-            gap:12px;
-            margin-top:12px;
-        }
-        .class-committee .committee-item {
-            background:#f8fafc;
-            padding:12px 16px;
-            border-radius:var(--radius-sm);
-            border:1px solid var(--border);
-            display:flex;
-            align-items:center;
-            gap:10px;
-        }
-        .class-committee .committee-item .role-badge {
-            font-size:10px;
-            padding:2px 10px;
-            border-radius:10px;
-            font-weight:600;
-            color:#fff;
-        }
+        .class-committee { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; margin-top:12px; }
+        .class-committee .committee-item { background:#f8fafc; padding:12px 16px; border-radius:var(--radius-sm); border:1px solid var(--border); display:flex; align-items:center; gap:10px; }
+        .class-committee .committee-item .role-badge { font-size:10px; padding:2px 10px; border-radius:10px; font-weight:600; color:#fff; }
         .class-committee .committee-item .name { font-weight:600; }
-
-        /* ===== 请假 ===== */
         .leave-list { display:flex; flex-direction:column; gap:8px; }
-        .leave-item {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:12px 16px;
-            background:#f8fafc;
-            border-radius:var(--radius-sm);
-            border-left:4px solid var(--warning);
-            flex-wrap:wrap;
-            gap:8px;
-        }
+        .leave-item { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:#f8fafc; border-radius:var(--radius-sm); border-left:4px solid var(--warning); flex-wrap:wrap; gap:8px; }
         .leave-item.approved { border-left-color:var(--success); opacity:0.7; }
         .leave-item.rejected { border-left-color:var(--danger); opacity:0.6; }
         .leave-item .leave-info { display:flex; gap:16px; align-items:center; flex-wrap:wrap; font-size:13px; }
         .leave-item .leave-info .name { font-weight:600; }
         .leave-item .leave-actions { display:flex; gap:6px; }
-
-        /* ===== 学生分析 ===== */
-        .profile-card {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:20px 22px;
-            border:1px solid var(--border);
-            box-shadow:var(--shadow);
-            transition:all var(--transition);
-        }
+        .profile-card { background:var(--card); border-radius:var(--radius); padding:20px 22px; border:1px solid var(--border); box-shadow:var(--shadow); transition:all var(--transition); }
         .profile-card:hover { box-shadow:var(--shadow-lg); }
         .profile-card .profile-header { display:flex; align-items:center; gap:16px; margin-bottom:12px; flex-wrap:wrap; }
-        .profile-card .profile-avatar {
-            width:48px; height:48px;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-weight:700;
-            font-size:20px;
-            color:#fff;
-            flex-shrink:0;
-        }
+        .profile-card .profile-avatar { width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:20px; color:#fff; flex-shrink:0; }
         .profile-card .profile-avatar.male { background:#3498db; }
         .profile-card .profile-avatar.female { background:#e84393; }
         .profile-card .profile-meta { flex:1; }
@@ -882,57 +304,19 @@
         .profile-card .bias-tag.none { background:var(--success); }
         .profile-card .record-item { font-size:12px; padding:4px 0; border-bottom:1px solid #f0f3f8; display:flex; gap:8px; justify-content:space-between; }
         .profile-card .record-item .time { color:var(--text-light); white-space:nowrap; }
-
-        /* ===== 家校沟通 ===== */
-        .contact-stats {
-            display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
-            gap:16px;
-            margin-bottom:24px;
-        }
-        .contact-stat-card {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:18px 20px;
-            border:1px solid var(--border);
-            box-shadow:var(--shadow);
-            transition:all var(--transition);
-        }
+        .contact-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; margin-bottom:24px; }
+        .contact-stat-card { background:var(--card); border-radius:var(--radius); padding:18px 20px; border:1px solid var(--border); box-shadow:var(--shadow); transition:all var(--transition); }
         .contact-stat-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
         .contact-stat-card .cs-value { font-size:28px; font-weight:800; color:var(--text); letter-spacing:-0.5px; }
         .contact-stat-card .cs-label { font-size:13px; color:var(--text-secondary); font-weight:500; }
         .contact-stat-card .cs-sub { font-size:12px; color:var(--text-light); margin-top:4px; }
-
         .contact-tabs { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
-        .contact-tabs .tab-btn {
-            padding:8px 20px;
-            border-radius:24px;
-            border:1.5px solid var(--border);
-            background:#fff;
-            cursor:pointer;
-            font-weight:600;
-            font-size:13px;
-            transition:all var(--transition);
-            color:var(--text-secondary);
-        }
+        .contact-tabs .tab-btn { padding:8px 20px; border-radius:24px; border:1.5px solid var(--border); background:#fff; cursor:pointer; font-weight:600; font-size:13px; transition:all var(--transition); color:var(--text-secondary); }
         .contact-tabs .tab-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
         .contact-tabs .tab-btn:hover { border-color:var(--primary); }
         .contact-tab-content { display:none; }
         .contact-tab-content.active { display:block; }
-
-        .contact-list .contact-item {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:14px 16px;
-            background:var(--card);
-            border-radius:var(--radius-sm);
-            border:1px solid var(--border);
-            margin-bottom:8px;
-            transition:all var(--transition);
-            flex-wrap:wrap;
-            gap:8px;
-        }
+        .contact-list .contact-item { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; background:var(--card); border-radius:var(--radius-sm); border:1px solid var(--border); margin-bottom:8px; transition:all var(--transition); flex-wrap:wrap; gap:8px; }
         .contact-list .contact-item:hover { box-shadow:var(--shadow); }
         .contact-item .info { display:flex; flex-direction:column; gap:2px; }
         .contact-item .info .name { font-weight:700; font-size:15px; }
@@ -940,104 +324,42 @@
         .contact-item .info .detail span { margin-right:12px; }
         .contact-item .badge-status { font-size:11px; padding:2px 12px; border-radius:12px; background:#e8f5e9; color:#2e7d32; }
         .contact-item .badge-status.unvisited { background:#fff3e0; color:#e65100; }
-
-        /* ===== 待办列表 ===== */
         .todo-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
         .todo-list li { padding:10px 14px; background:#f8fafc; border-radius:8px; border-left:4px solid var(--primary); font-size:13px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
         .todo-list li .todo-meta { font-size:11px; color:var(--text-light); }
-
         .timeline { display:flex; flex-direction:column; gap:6px; margin-top:8px; }
         .timeline .tl-item { display:flex; gap:10px; font-size:13px; padding:6px 0; border-bottom:1px solid #f0f3f8; }
         .timeline .tl-item .tl-time { color:var(--text-light); font-size:11px; white-space:nowrap; min-width:60px; }
         .timeline .tl-item .tl-content { color:var(--text); }
-
-        /* ===== 通知公告（模板化） ===== */
         .notice-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
         .notice-list li { padding:12px 16px; background:#f8fafc; border-radius:8px; border-left:4px solid var(--border); cursor:pointer; transition:all var(--transition); }
         .notice-list li:hover { border-left-color:var(--primary); }
         .notice-list .notice-time { float:right; font-size:11px; color:var(--text-light); }
         .notice-list .notice-title { font-weight:600; display:block; margin-bottom:2px; }
         .notice-list .notice-excerpt { font-size:12px; color:var(--text-secondary); }
-
         #templateFields .form-group { margin-bottom:10px; }
         #templateFields .form-group label { font-size:12px; font-weight:600; color:var(--text-secondary); display:block; margin-bottom:3px; }
         #templateFields .form-group input { width:100%; padding:8px 12px; border-radius:6px; border:1.5px solid var(--border); font-size:13px; background:#fff; }
         #savedNoticeList > div { padding:12px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
         #savedNoticeList > div:last-child { border-bottom:none; }
-
-        /* ===== 快速操作 ===== */
-        .quick-actions {
-            display:grid;
-            grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
-            gap:10px;
-            margin-top:8px;
-        }
-        .quick-actions .qa-btn {
-            padding:12px 8px;
-            background:#f8fafc;
-            border:1px solid var(--border);
-            border-radius:var(--radius-sm);
-            text-align:center;
-            cursor:pointer;
-            transition:all var(--transition);
-            font-size:13px;
-            font-weight:500;
-            color:var(--text);
-        }
+        .quick-actions { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-top:8px; }
+        .quick-actions .qa-btn { padding:12px 8px; background:#f8fafc; border:1px solid var(--border); border-radius:var(--radius-sm); text-align:center; cursor:pointer; transition:all var(--transition); font-size:13px; font-weight:500; color:var(--text); }
         .quick-actions .qa-btn:hover { background:var(--primary-light); border-color:var(--primary); transform:translateY(-2px); }
         .quick-actions .qa-btn .icon { font-size:22px; display:block; margin-bottom:2px; }
-
-        /* ===== 通用工具 ===== */
         .empty-state { text-align:center; padding:40px 20px; color:var(--text-light); }
         .empty-state .empty-icon { font-size:48px; margin-bottom:12px; display:block; }
         .empty-state h3 { color:var(--text); margin-bottom:6px; }
-        .mobile-menu-btn {
-            display:none;
-            width:36px; height:36px;
-            border-radius:50%;
-            background:#f0f3f8;
-            border:none;
-            cursor:pointer;
-            font-size:18px;
-            align-items:center;
-            justify-content:center;
-            flex-shrink:0;
-        }
+        .mobile-menu-btn { display:none; width:36px; height:36px; border-radius:50%; background:#f0f3f8; border:none; cursor:pointer; font-size:18px; align-items:center; justify-content:center; flex-shrink:0; }
         .greeting { font-size:14px; color:var(--text-secondary); }
         .greeting strong { color:var(--text); }
         .date-display { font-size:13px; color:var(--text-light); background:#f5f7fa; padding:4px 14px; border-radius:16px; display:inline-block; }
-
-        /* ===== 校历日历 ===== */
-        .calendar-grid {
-            display:grid;
-            grid-template-columns:repeat(7, 1fr);
-            gap:4px;
-            margin-top:12px;
-        }
-        .calendar-grid .day-cell {
-            padding:8px 4px;
-            text-align:center;
-            border-radius:6px;
-            background:#f8fafc;
-            border:1px solid var(--border);
-            font-size:13px;
-            cursor:default;
-        }
+        .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; margin-top:12px; }
+        .calendar-grid .day-cell { padding:8px 4px; text-align:center; border-radius:6px; background:#f8fafc; border:1px solid var(--border); font-size:13px; cursor:default; }
         .calendar-grid .day-cell.weekend { background:#f0f0f5; color:var(--text-light); }
         .calendar-grid .day-cell.today { background:var(--primary); color:#fff; font-weight:700; }
         .calendar-grid .day-cell.has-event { border-color:var(--warning); }
         .calendar-grid .day-header { font-weight:600; background:transparent; border:none; font-size:12px; color:var(--text-secondary); }
-
-        /* ===== 班级记录 ===== */
-        .class-record-item {
-            background:var(--card);
-            border-radius:var(--radius);
-            padding:16px 20px;
-            border:1px solid var(--border);
-            margin-bottom:12px;
-            box-shadow:var(--shadow);
-            transition:all var(--transition);
-        }
+        .class-record-item { background:var(--card); border-radius:var(--radius); padding:16px 20px; border:1px solid var(--border); margin-bottom:12px; box-shadow:var(--shadow); transition:all var(--transition); }
         .class-record-item:hover { box-shadow:var(--shadow-lg); }
         .class-record-item .record-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
         .class-record-item .record-header .record-author { font-weight:600; font-size:14px; }
@@ -1045,34 +367,25 @@
         .class-record-item .record-content { font-size:14px; line-height:1.7; color:var(--text); }
         .class-record-item .record-images { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
         .class-record-item .record-images img { max-width:200px; max-height:150px; border-radius:8px; object-fit:cover; border:1px solid var(--border); }
-
-        /* ===== 其他 ===== */
         .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
         .detail-grid .full-width { grid-column:1 / -1; }
         .detail-grid .info-row { display:flex; padding:6px 0; border-bottom:1px solid #f0f3f8; }
         .detail-grid .info-row .label { width:80px; color:var(--text-secondary); font-size:13px; }
         .detail-grid .info-row .value { flex:1; font-weight:500; }
-        .detail-grid .info-row .value input,
-        .detail-grid .info-row .value select { width:100%; padding:4px 8px; border:1px solid var(--border); border-radius:4px; font-size:13px; }
-
+        .detail-grid .info-row .value input,.detail-grid .info-row .value select { width:100%; padding:4px 8px; border:1px solid var(--border); border-radius:4px; font-size:13px; }
         .exam-paper-area { background:#f8fafc; padding:16px; border-radius:var(--radius-sm); border:1px dashed var(--border); margin-top:12px; }
         .exam-paper-area .preview { max-height:300px; overflow-y:auto; white-space:pre-wrap; font-size:13px; background:#fff; padding:12px; border-radius:4px; border:1px solid #eee; }
-
         .user-profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
         .user-profile-grid .profile-item { padding:8px 0; border-bottom:1px solid #f0f3f8; display:flex; justify-content:space-between; }
         .user-profile-grid .profile-item .label { color:var(--text-secondary); font-size:13px; }
         .user-profile-grid .profile-item .value { font-weight:500; }
         .user-profile-grid .full-width { grid-column:1 / -1; }
-
         .avatar-upload-wrapper { display:flex; flex-direction:column; align-items:center; gap:8px; padding:12px 0; }
         .avatar-upload-wrapper .avatar-preview { width:80px; height:80px; border-radius:50%; background-size:cover; background-position:center; background-color:#e2e8f0; border:2px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:32px; color:var(--text-light); cursor:pointer; transition:all var(--transition); }
         .avatar-upload-wrapper .avatar-preview:hover { opacity:0.8; transform:scale(1.02); }
         .avatar-upload-wrapper .avatar-preview img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
-
         .eval-trend-chart { height:120px; position:relative; }
         .eval-trend-chart canvas { width:100% !important; height:100% !important; }
-
-        /* ===== 响应式 ===== */
         @media (max-width:900px) {
             .sidebar { transform:translateX(-100%); }
             .sidebar.open { transform:translateX(0); }
@@ -1081,8 +394,8 @@
             .stats-grid { grid-template-columns:1fr 1fr; }
             .homework-stats { grid-template-columns:1fr 1fr; }
             .contact-stats { grid-template-columns:1fr 1fr; }
-            .seat-grid { grid-template-columns:repeat(4, 1fr); }
-            .schedule-grid { grid-template-columns:50px repeat(7, 1fr); gap:4px; }
+            .seat-grid { grid-template-columns:repeat(4,1fr); }
+            .schedule-grid { grid-template-columns:50px repeat(7,1fr); gap:4px; }
             .grid-2 { grid-template-columns:1fr; }
             .random-pick .display-name { font-size:44px; min-height:70px; }
             .topbar { padding:10px 14px; }
@@ -1092,9 +405,9 @@
             .stats-grid { grid-template-columns:1fr; }
             .homework-stats { grid-template-columns:1fr; }
             .contact-stats { grid-template-columns:1fr; }
-            .seat-grid { grid-template-columns:repeat(2, 1fr); }
+            .seat-grid { grid-template-columns:repeat(2,1fr); }
             .random-pick .display-name { font-size:32px; min-height:60px; }
-            .schedule-grid { grid-template-columns:40px repeat(7, 1fr); gap:3px; font-size:9px; }
+            .schedule-grid { grid-template-columns:40px repeat(7,1fr); gap:3px; font-size:9px; }
             .schedule-cell { padding:4px 2px; min-height:40px; font-size:9px; }
             .schedule-cell .subject { font-size:10px; }
             .contact-item { flex-direction:column; align-items:flex-start; }
@@ -1103,30 +416,19 @@
         }
     </style>
 </head>
-
 <body>
 
 <!-- ===== 登录页面 ===== -->
 <div class="login-page" id="loginPage">
     <div class="login-box">
-        <div class="logo">
-            <span class="logo-icon">📋</span>
-            <h1>Workbuddy Pro</h1>
-            <p>云端版 · 多端同步</p>
-        </div>
+        <div class="logo"><span class="logo-icon">📋</span><h1>Workbuddy Pro</h1><p>云端版 · 多端同步</p></div>
         <div id="loginForm">
             <div class="form-group"><label>👤 用户名</label><input type="text" id="loginUsername" placeholder="请输入用户名" value="demo"></div>
             <div class="form-group"><label>🔒 密码</label><input type="password" id="loginPassword" placeholder="请输入密码" value="123456"></div>
             <button class="btn btn-primary" onclick="handleLogin()">🚀 登 录</button>
-            <div class="login-extra">
-                <span>还没有账号？<a onclick="showRegister()">立即注册</a></span>
-                <a onclick="showForgotPassword()">🔑 忘记密码？</a>
-            </div>
+            <div class="login-extra"><span>还没有账号？<a onclick="showRegister()">立即注册</a></span><a onclick="showForgotPassword()">🔑 忘记密码？</a></div>
             <div class="error-msg" id="loginError"></div>
-            <div class="demo-hint">
-                💡 <strong>云端同步说明：</strong> 注册后账号可在任意设备登录，数据自动同步。<br>
-                演示账号: demo / 123456（仅本地缓存，建议注册新账号）
-            </div>
+            <div class="demo-hint">💡 <strong>云端同步说明：</strong> 注册后账号可在任意设备登录，数据自动同步。<br>演示账号: demo / 123456（仅本地缓存，建议注册新账号）</div>
         </div>
         <div id="registerForm" style="display:none;">
             <div class="form-group"><label>👤 用户名</label><input type="text" id="regUsername" placeholder="请设置用户名"></div>
@@ -1150,15 +452,10 @@
 
 <!-- ===== 主应用 ===== -->
 <div class="app-container" id="appContainer">
-
-    <!-- 侧边栏 -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-logo" onclick="switchPage('dashboard')">
             <div class="logo-icon">📋</div>
-            <div>
-                <div class="logo-text">WorkBuddy</div>
-                <div class="logo-sub" id="sidebarClass">未设置班级</div>
-            </div>
+            <div><div class="logo-text">WorkBuddy</div><div class="logo-sub" id="sidebarClass">未设置班级</div></div>
         </div>
         <nav class="sidebar-nav" id="sidebarNav">
             <div class="nav-section">📌 主菜单</div>
@@ -1186,23 +483,15 @@
         </nav>
         <div class="sidebar-footer" id="sidebarFooter">
             <div class="avatar" id="userAvatar" style="background:#6c5ce7;">👤</div>
-            <div class="user-info" id="userInfoClick">
-                <span id="userDisplayName">老师</span>
-                <span id="userRoleDisplay">班主任</span>
-            </div>
+            <div class="user-info" id="userInfoClick"><span id="userDisplayName">老师</span><span id="userRoleDisplay">班主任</span></div>
             <button class="logout-btn" onclick="handleLogout()">退出</button>
         </div>
     </aside>
-
-    <!-- 主内容 -->
     <div class="main-content">
         <header class="topbar">
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
                 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="菜单">☰</button>
-                <div>
-                    <div class="page-title" id="pageTitle">📊 工作台总览</div>
-                    <div class="breadcrumb">首页 &gt; <span id="breadcrumbCurrent">工作台总览</span></div>
-                </div>
+                <div><div class="page-title" id="pageTitle">📊 工作台总览</div><div class="breadcrumb">首页 &gt; <span id="breadcrumbCurrent">工作台总览</span></div></div>
                 <span class="date-display" id="headerDate"></span>
                 <span class="greeting" id="headerGreeting">👋 欢迎，<strong>老师</strong></span>
             </div>
@@ -1218,10 +507,7 @@
                         <div class="theme-option" data-theme="sunset" onclick="applyTheme('sunset')">日落橙</div>
                     </div>
                 </div>
-                <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" placeholder="搜索学生、作业、通知..." id="globalSearch" onkeydown="if(event.key==='Enter'){handleGlobalSearch();}">
-                </div>
+                <div class="search-box"><span class="search-icon">🔍</span><input type="text" placeholder="搜索学生、作业、通知..." id="globalSearch" onkeydown="if(event.key==='Enter'){handleGlobalSearch();}"></div>
                 <button class="btn btn-sm btn-primary" onclick="refreshData()" style="background:var(--primary);color:#fff;">🔄 刷新</button>
                 <div class="quick-add-wrapper">
                     <button class="btn btn-sm btn-primary quick-add-btn" onclick="toggleQuickAddMenu()">＋ 快速添加</button>
@@ -1236,57 +522,19 @@
                 </div>
             </div>
         </header>
-
         <div class="content-area" id="contentArea">
 
             <!-- ===== 工作台总览 ===== -->
             <div class="page active" id="page-dashboard">
                 <div class="stats-grid">
-                    <div class="stat-card" onclick="switchPage('students')">
-                        <div class="stat-icon blue">👨‍🎓</div>
-                        <div class="stat-info">
-                            <div class="stat-value" id="dashTotal">0</div>
-                            <div class="stat-label">班级总人数</div>
-                            <div class="stat-sub" id="dashGender">男生0 · 女生0</div>
-                        </div>
-                    </div>
-                    <div class="stat-card" onclick="switchPage('attendance')">
-                        <div class="stat-icon green">✅</div>
-                        <div class="stat-info">
-                            <div class="stat-value" id="dashAttendance">0</div>
-                            <div class="stat-label">今日出勤</div>
-                            <div class="stat-sub" id="dashAttRate">出勤率 0%</div>
-                        </div>
-                    </div>
-                    <div class="stat-card" onclick="switchPage('homework')">
-                        <div class="stat-icon orange">📝</div>
-                        <div class="stat-info">
-                            <div class="stat-value" id="dashHomework">0</div>
-                            <div class="stat-label">作业总数</div>
-                            <div class="stat-sub" id="dashHomeworkWeek">本周 0 次</div>
-                        </div>
-                    </div>
-                    <div class="stat-card" onclick="switchPage('grades')">
-                        <div class="stat-icon purple">⭐</div>
-                        <div class="stat-info">
-                            <div class="stat-value" id="dashGrade">—</div>
-                            <div class="stat-label">班级均分</div>
-                            <div class="stat-sub" id="dashGradeExam">最近考试</div>
-                        </div>
-                    </div>
-                    <div class="stat-card" onclick="switchPage('random')">
-                        <div class="stat-icon pink">🎲</div>
-                        <div class="stat-info">
-                            <div class="stat-value" id="dashPicked">0</div>
-                            <div class="stat-label">已点名</div>
-                            <div class="stat-sub">今日课堂互动</div>
-                        </div>
-                    </div>
+                    <div class="stat-card" onclick="switchPage('students')"><div class="stat-icon blue">👨‍🎓</div><div class="stat-info"><div class="stat-value" id="dashTotal">0</div><div class="stat-label">班级总人数</div><div class="stat-sub" id="dashGender">男生0 · 女生0</div></div></div>
+                    <div class="stat-card" onclick="switchPage('attendance')"><div class="stat-icon green">✅</div><div class="stat-info"><div class="stat-value" id="dashAttendance">0</div><div class="stat-label">今日出勤</div><div class="stat-sub" id="dashAttRate">出勤率 0%</div></div></div>
+                    <div class="stat-card" onclick="switchPage('homework')"><div class="stat-icon orange">📝</div><div class="stat-info"><div class="stat-value" id="dashHomework">0</div><div class="stat-label">作业总数</div><div class="stat-sub" id="dashHomeworkWeek">本周 0 次</div></div></div>
+                    <div class="stat-card" onclick="switchPage('grades')"><div class="stat-icon purple">⭐</div><div class="stat-info"><div class="stat-value" id="dashGrade">—</div><div class="stat-label">班级均分</div><div class="stat-sub" id="dashGradeExam">最近考试</div></div></div>
+                    <div class="stat-card" onclick="switchPage('random')"><div class="stat-icon pink">🎲</div><div class="stat-info"><div class="stat-value" id="dashPicked">0</div><div class="stat-label">已点名</div><div class="stat-sub">今日课堂互动</div></div></div>
                 </div>
-
                 <div class="grid-2">
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">⚡ 快捷操作</span></div>
+                    <div class="card"><div class="card-header"><span class="card-title">⚡ 快捷操作</span></div>
                         <div class="quick-actions">
                             <div class="qa-btn" onclick="switchPage('attendance')"><span class="icon">📋</span>考勤登记</div>
                             <div class="qa-btn" onclick="switchPage('homework')"><span class="icon">📝</span>布置作业</div>
@@ -1297,70 +545,38 @@
                             <div class="qa-btn" onclick="switchPage('profile')"><span class="icon">📈</span>综合分析</div>
                             <div class="qa-btn" onclick="switchPage('notices')"><span class="icon">🔔</span>发布通知</div>
                         </div>
-                        <div style="margin-top:14px;padding:10px 14px;background:#fffbe6;border-radius:8px;font-size:12px;color:#8a6d14;">
-                            💡 <strong>提示：</strong> 支持 Excel 批量导入学生、成绩、通讯录，智能识别字段
-                        </div>
+                        <div style="margin-top:14px;padding:10px 14px;background:#fffbe6;border-radius:8px;font-size:12px;color:#8a6d14;">💡 <strong>提示：</strong> 支持 Excel 批量导入学生、成绩、通讯录，智能识别字段</div>
                     </div>
                     <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">📌 今日待办</span>
-                            <button class="btn-ghost" onclick="switchPage('calendar')">查看全部 →</button>
-                            <button class="btn btn-sm btn-primary" onclick="openTodoModal()" style="margin-left:auto;">＋ 新建</button>
-                        </div>
-                        <ul class="todo-list" id="todayTodos">
-                            <li style="color:var(--text-muted);text-align:center;padding:20px 0;">暂无待办，点击「新建」添加</li>
-                        </ul>
+                        <div class="card-header"><span class="card-title">📌 今日待办</span><button class="btn-ghost" onclick="switchPage('calendar')">查看全部 →</button><button class="btn btn-sm btn-primary" onclick="openTodoModal()" style="margin-left:auto;">＋ 新建</button></div>
+                        <ul class="todo-list" id="todayTodos"><li style="color:var(--text-muted);text-align:center;padding:20px 0;">暂无待办，点击「新建」添加</li></ul>
                         <div class="card-header" style="margin-top:12px;margin-bottom:4px;"><span class="card-title">📰 最新动态</span></div>
-                        <div class="timeline" id="timelineContainer">
-                            <div class="tl-item"><span class="tl-time">--</span><span class="tl-content">暂无动态</span></div>
-                        </div>
+                        <div class="timeline" id="timelineContainer"><div class="tl-item"><span class="tl-time">--</span><span class="tl-content">暂无动态</span></div></div>
                     </div>
                 </div>
-
-                <!-- 校历 + 背景图 -->
                 <div class="grid-2 mt-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">📅 本月校历</span>
-                            <button class="btn-ghost btn-sm" onclick="switchPage('calendar')">查看全部 →</button>
-                        </div>
-                        <div id="miniCalendar"></div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">🖼️ 工作台背景</span></div>
+                    <div class="card"><div class="card-header"><span class="card-title">📅 本月校历</span><button class="btn-ghost btn-sm" onclick="switchPage('calendar')">查看全部 →</button></div><div id="miniCalendar"></div></div>
+                    <div class="card"><div class="card-header"><span class="card-title">🖼️ 工作台背景</span></div>
                         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
                             <button class="btn btn-sm btn-outline" onclick="document.getElementById('dashBgInput').click()">📤 上传背景图</button>
                             <input type="file" id="dashBgInput" accept="image/*" style="display:none" onchange="uploadDashboardBg(event)">
                             <button class="btn btn-sm btn-danger" onclick="removeDashboardBg()">🗑️ 移除</button>
                             <span class="text-muted" style="font-size:11px;">建议尺寸 1920×600</span>
                         </div>
-                        <div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:12px;color:var(--text-secondary);">
-                            💡 上传后仅当前工作台页面生效
-                        </div>
+                        <div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:12px;color:var(--text-secondary);">💡 上传后仅当前工作台页面生效</div>
                     </div>
                 </div>
-
-                <!-- 本周工作记录（卡片化） -->
                 <div class="card mt-12">
-                    <div class="card-header">
-                        <span class="card-title">📋 本周工作记录</span>
-                        <span class="text-muted" id="weekRecordCount">共 0 条</span>
-                    </div>
-                    <div id="weekRecordCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
-                        <div class="text-muted" style="text-align:center;padding:20px 0;grid-column:1/-1;">暂无本周记录</div>
-                    </div>
+                    <div class="card-header"><span class="card-title">📋 本周工作记录</span><span class="text-muted" id="weekRecordCount">共 0 条</span></div>
+                    <div id="weekRecordCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;"><div class="text-muted" style="text-align:center;padding:20px 0;grid-column:1/-1;">暂无本周记录</div></div>
                 </div>
             </div>
 
             <!-- ===== 座次表 ===== -->
             <div class="page" id="page-seating">
                 <div class="card mb-12">
-                    <div class="flex-between">
-                        <span class="card-title">🪑 可视化座次表 (8×8)</span>
-                        <div class="flex-wrap">
-                            <button class="btn btn-sm btn-outline" onclick="toggleSeatEdit()" id="seatEditBtn">✏️ 编辑模式</button>
-                            <span class="text-muted" id="seatEditHint">点击拖拽调换座位</span>
-                        </div>
+                    <div class="flex-between"><span class="card-title">🪑 可视化座次表 (8×8)</span>
+                        <div class="flex-wrap"><button class="btn btn-sm btn-outline" onclick="toggleSeatEdit()" id="seatEditBtn">✏️ 编辑模式</button><span class="text-muted" id="seatEditHint">点击拖拽调换座位</span></div>
                     </div>
                     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center;">
                         <select id="arrangeStrategy" style="padding:6px 14px;border-radius:16px;border:1.5px solid var(--border);font-size:12px;">
@@ -1376,38 +592,20 @@
                         <span style="color:var(--text-light);font-size:11px;margin-left:4px;">⬅️ 选择策略后点击执行</span>
                         <div style="flex:1;"></div>
                         <span style="font-size:12px;color:var(--text-secondary);">📁 方案：</span>
-                        <select id="seatPlanSelect" style="padding:6px 14px;border-radius:16px;border:1.5px solid var(--border);font-size:12px;min-width:120px;">
-                            <option value="">— 加载方案 —</option>
-                        </select>
+                        <select id="seatPlanSelect" style="padding:6px 14px;border-radius:16px;border:1.5px solid var(--border);font-size:12px;min-width:120px;"><option value="">— 加载方案 —</option></select>
                         <button class="btn btn-sm btn-outline" onclick="saveSeatPlan()">💾 保存方案</button>
                         <button class="btn btn-sm btn-danger" onclick="deleteSeatPlan()">🗑️ 删除方案</button>
                         <button class="btn btn-sm btn-outline" onclick="resetSeats()">🔄 重置</button>
                     </div>
                 </div>
-
                 <div style="display:grid;grid-template-columns:280px 1fr;gap:16px;">
                     <div class="card" style="padding:16px;max-height:600px;display:flex;flex-direction:column;">
-                        <div style="font-weight:600;font-size:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
-                            <span>🚶 待安排学生</span>
-                            <span class="text-muted" id="unseatedCountLeft">0 人</span>
-                        </div>
-                        <div class="search-box" style="max-width:100%;margin-bottom:10px;">
-                            <span class="search-icon">🔍</span>
-                            <input type="text" id="unseatedSearch" placeholder="搜索姓名..." oninput="renderUnseatedList()">
-                        </div>
-                        <div id="unseatedListContainer" style="flex:1;overflow-y:auto;min-height:200px;border:1px solid var(--border);border-radius:8px;padding:4px;">
-                            <div class="text-muted" style="text-align:center;padding:20px 0;">暂无待安排学生</div>
-                        </div>
-                        <div style="margin-top:10px;font-size:11px;color:var(--text-light);text-align:center;">
-                            💡 拖拽学生名字到右侧座位格
-                        </div>
+                        <div style="font-weight:600;font-size:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><span>🚶 待安排学生</span><span class="text-muted" id="unseatedCountLeft">0 人</span></div>
+                        <div class="search-box" style="max-width:100%;margin-bottom:10px;"><span class="search-icon">🔍</span><input type="text" id="unseatedSearch" placeholder="搜索姓名..." oninput="renderUnseatedList()"></div>
+                        <div id="unseatedListContainer" style="flex:1;overflow-y:auto;min-height:200px;border:1px solid var(--border);border-radius:8px;padding:4px;"><div class="text-muted" style="text-align:center;padding:20px 0;">暂无待安排学生</div></div>
+                        <div style="margin-top:10px;font-size:11px;color:var(--text-light);text-align:center;">💡 拖拽学生名字到右侧座位格</div>
                     </div>
-                    <div class="card" style="padding:16px;overflow-x:auto;">
-                        <div class="seat-container">
-                            <div class="podium">📖 讲 台</div>
-                            <div id="seatContainer" class="seat-grid"></div>
-                        </div>
-                    </div>
+                    <div class="card" style="padding:16px;overflow-x:auto;"><div class="seat-container"><div class="podium">📖 讲 台</div><div id="seatContainer" class="seat-grid"></div></div></div>
                 </div>
             </div>
 
@@ -1425,20 +623,11 @@
                     </div>
                 </div>
                 <div class="grid-2 mb-12">
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">🏅 班委名单</span><button class="btn btn-sm btn-outline" onclick="openCommitteeModal('class')">✏️ 编辑</button></div>
-                        <div id="committeeContainer" class="class-committee"></div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">📚 课代表</span><button class="btn btn-sm btn-outline" onclick="openCommitteeModal('subject')">✏️ 编辑</button></div>
-                        <div id="subjectRepContainer" class="class-committee"></div>
-                    </div>
+                    <div class="card"><div class="card-header"><span class="card-title">🏅 班委名单</span><button class="btn btn-sm btn-outline" onclick="openCommitteeModal('class')">✏️ 编辑</button></div><div id="committeeContainer" class="class-committee"></div></div>
+                    <div class="card"><div class="card-header"><span class="card-title">📚 课代表</span><button class="btn btn-sm btn-outline" onclick="openCommitteeModal('subject')">✏️ 编辑</button></div><div id="subjectRepContainer" class="class-committee"></div></div>
                 </div>
                 <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>座位</th><th>职务</th><th>家长电话</th><th>住址</th><th>操作</th></tr></thead>
-                        <tbody id="studentTableBody"></tbody>
-                    </table>
+                    <table><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>座位</th><th>职务</th><th>家长电话</th><th>住址</th><th>操作</th></tr></thead><tbody id="studentTableBody"></tbody></table>
                 </div>
             </div>
 
@@ -1453,50 +642,34 @@
                     </div>
                 </div>
                 <div class="grid-2">
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">📋 今日考勤</span></div>
+                    <div class="card"><div class="card-header"><span class="card-title">📋 今日考勤</span></div>
                         <div class="table-wrap" style="max-height:400px;overflow-y:auto;">
                             <table><thead><tr><th>学号</th><th>姓名</th><th>状态</th><th>备注</th></tr></thead><tbody id="attendanceTableBody"></tbody></table>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">📝 请假管理</span><button class="btn btn-sm btn-primary" onclick="openLeaveModal()">＋ 新增请假</button></div>
+                    <div class="card"><div class="card-header"><span class="card-title">📝 请假管理</span><button class="btn btn-sm btn-primary" onclick="openLeaveModal()">＋ 新增请假</button></div>
                         <div id="leaveList" class="leave-list"><div class="empty-state" style="padding:20px;"><p class="text-muted">暂无请假记录</p></div></div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== 待办与日程（独立页面） ===== -->
+            <!-- ===== 待办与日程 ===== -->
             <div class="page" id="page-calendar">
-                <div class="card mb-12">
-                    <div class="flex-between">
-                        <span class="card-title">📅 待办与日程</span>
-                        <button class="btn btn-primary btn-sm" onclick="openTodoModal()">＋ 新建待办</button>
-                    </div>
-                </div>
+                <div class="card mb-12"><div class="flex-between"><span class="card-title">📅 待办与日程</span><button class="btn btn-primary btn-sm" onclick="openTodoModal()">＋ 新建待办</button></div></div>
                 <div class="grid-2">
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">📋 全部待办</span></div>
-                        <ul class="todo-list" id="allTodoList"></ul>
-                    </div>
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">📅 本月日历</span></div>
-                        <div id="fullCalendar"></div>
-                    </div>
+                    <div class="card"><div class="card-header"><span class="card-title">📋 全部待办</span></div><ul class="todo-list" id="allTodoList"></ul></div>
+                    <div class="card"><div class="card-header"><span class="card-title">📅 本月日历</span></div><div id="fullCalendar"></div></div>
                 </div>
             </div>
 
             <!-- ===== 智能课程表 ===== -->
             <div class="page" id="page-schedule">
                 <div class="card mb-12">
-                    <div class="flex-between">
-                        <span class="card-title">📅 智能课程表</span>
+                    <div class="flex-between"><span class="card-title">📅 智能课程表</span>
                         <div class="flex-wrap">
                             <button class="btn btn-sm btn-outline" onclick="toggleScheduleType()">📚 切换教师课表</button>
                             <span class="text-muted" id="scheduleTypeLabel">班级课表</span>
-                            <label style="font-size:13px;display:flex;align-items:center;gap:4px;">
-                                第 <input type="number" id="weekNumber" value="1" min="1" max="30" style="width:50px;padding:4px 6px;border-radius:4px;border:1px solid var(--border);" onchange="updateWeek()"> 周
-                            </label>
+                            <label style="font-size:13px;display:flex;align-items:center;gap:4px;">第 <input type="number" id="weekNumber" value="1" min="1" max="30" style="width:50px;padding:4px 6px;border-radius:4px;border:1px solid var(--border);" onchange="updateWeek()"> 周</label>
                             <span class="text-muted" id="weekLabel">第1周</span>
                             <button class="btn btn-sm btn-outline" onclick="document.getElementById('scheduleBgInput').click()">🖼️ 上传背景图</button>
                             <input type="file" id="scheduleBgInput" accept="image/*" style="display:none" onchange="uploadScheduleBg(event)">
@@ -1505,17 +678,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div id="scheduleGrid" class="schedule-grid"></div>
-                    <div style="margin-top:12px;font-size:11px;color:var(--text-light);text-align:center;">💡 点击课程格子可编辑 · 周末显示为灰色</div>
-                </div>
+                <div class="card"><div id="scheduleGrid" class="schedule-grid"></div><div style="margin-top:12px;font-size:11px;color:var(--text-light);text-align:center;">💡 点击课程格子可编辑 · 周末显示为灰色</div></div>
             </div>
 
             <!-- ===== 作业管理 ===== -->
             <div class="page" id="page-homework">
                 <div class="card mb-12">
-                    <div class="flex-between">
-                        <span class="card-title">📝 作业管理</span>
+                    <div class="flex-between"><span class="card-title">📝 作业管理</span>
                         <div class="flex-wrap">
                             <select id="hwSubjectFilter" onchange="renderHomework()" style="padding:6px 12px;border-radius:16px;border:1.5px solid var(--border);font-size:12px;">
                                 <option value="all">全部科目</option>
@@ -1562,28 +731,20 @@
                     </div>
                 </div>
                 <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>学号</th><th>姓名</th><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>总分</th><th>排名</th></tr></thead>
-                        <tbody id="gradeTableBody"></tbody>
-                    </table>
+                    <table><thead><tr><th>学号</th><th>姓名</th><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>总分</th><th>排名</th></tr></thead><tbody id="gradeTableBody"></tbody></table>
                 </div>
             </div>
 
             <!-- ===== 期末评语 ===== -->
             <div class="page" id="page-comments">
-                <div class="card mb-12">
-                    <div class="flex-between"><span class="card-title">✍️ 期末评语批量生成 · AI 智能匹配</span><div class="flex-wrap"><span class="text-muted" id="commentStats">已生成 0/0</span><button class="btn btn-primary btn-sm" onclick="generateComments()">⚡ 一键生成</button><button class="btn btn-sm btn-outline" onclick="copyAllComments()">📋 复制全部</button></div></div>
-                </div>
+                <div class="card mb-12"><div class="flex-between"><span class="card-title">✍️ 期末评语批量生成 · AI 智能匹配</span><div class="flex-wrap"><span class="text-muted" id="commentStats">已生成 0/0</span><button class="btn btn-primary btn-sm" onclick="generateComments()">⚡ 一键生成</button><button class="btn btn-sm btn-outline" onclick="copyAllComments()">📋 复制全部</button></div></div></div>
                 <div class="grid-2" id="commentGrid"></div>
             </div>
 
             <!-- ===== 随机点名 ===== -->
             <div class="page" id="page-random">
                 <div class="random-pick">
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-                        <h3 style="font-size:20px;font-weight:700;">🎲 上课随机点名</h3>
-                        <span class="text-muted" style="font-size:13px;">✨ 尽量不重复已点名同学</span>
-                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;"><h3 style="font-size:20px;font-weight:700;">🎲 上课随机点名</h3><span class="text-muted" style="font-size:13px;">✨ 尽量不重复已点名同学</span></div>
                     <p class="random-sub">点击「开始滚动」，姓名滚动 <strong>20秒</strong> 后自动定格</p>
                     <div class="display-name" id="randomDisplay">准备开始</div>
                     <div class="flex-wrap" style="justify-content:center;gap:12px;margin-top:8px;">
@@ -1591,43 +752,20 @@
                         <button class="btn btn-outline" onclick="pauseRandomPick()">⏸️ 暂停定格</button>
                         <button class="btn btn-outline" onclick="resetRandomPick()">🔄 重置</button>
                     </div>
-                    <div style="margin-top:12px;font-size:13px;color:var(--text-secondary);display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-                        <span>⭐ 上次点中：<strong id="lastPicked">—</strong></span>
-                        <span>📌 已点 <strong id="pickedCount">0</strong> 人</span>
-                        <button class="btn-ghost btn-sm" onclick="resetPickedHistory()">清空记录</button>
-                    </div>
+                    <div style="margin-top:12px;font-size:13px;color:var(--text-secondary);display:flex;flex-wrap:wrap;gap:12px;justify-content:center;"><span>⭐ 上次点中：<strong id="lastPicked">—</strong></span><span>📌 已点 <strong id="pickedCount">0</strong> 人</span><button class="btn-ghost btn-sm" onclick="resetPickedHistory()">清空记录</button></div>
                     <div class="random-history" id="pickedHistoryContainer"><span style="color:var(--text-light);font-size:12px;">暂无历史记录</span></div>
                 </div>
             </div>
 
             <!-- ===== 学生综合分析 ===== -->
             <div class="page" id="page-profile">
-                <div class="card mb-12">
-                    <div class="flex-between">
-                        <span class="card-title">📈 学生综合分析 · 学业·行为·成长</span>
-                        <div class="flex-wrap"><span class="text-muted" id="profileDateLabel"></span><button class="btn btn-sm btn-primary" onclick="openProfileRecord()">＋ 添加记录</button><button class="btn btn-sm btn-outline" onclick="refreshProfileCharts()">🔄 刷新图表</button></div>
-                    </div>
-                </div>
+                <div class="card mb-12"><div class="flex-between"><span class="card-title">📈 学生综合分析 · 学业·行为·成长</span><div class="flex-wrap"><span class="text-muted" id="profileDateLabel"></span><button class="btn btn-sm btn-primary" onclick="openProfileRecord()">＋ 添加记录</button><button class="btn btn-sm btn-outline" onclick="refreshProfileCharts()">🔄 刷新图表</button></div></div></div>
                 <div class="grid-2" id="profileGrid"><div class="empty-state" style="grid-column:1/-1;"><span class="empty-icon">📈</span><h3>暂无学生数据</h3><p>请先导入学生，系统将自动生成综合分析报告</p></div></div>
             </div>
 
             <!-- ===== 班级记录 ===== -->
             <div class="page" id="page-class-record">
-                <div class="card mb-12">
-                    <div class="flex-between">
-                        <span class="card-title">📸 班级记录 · 班级朋友圈</span>
-                        <div class="flex-wrap">
-                            <button class="btn btn-primary btn-sm" onclick="openClassRecordModal()">＋ 发布新记录</button>
-                            <select id="recordTypeFilter" onchange="renderClassRecords()" style="padding:6px 12px;border-radius:16px;border:1.5px solid var(--border);font-size:12px;">
-                                <option value="all">全部类型</option>
-                                <option value="活动">🎯 活动</option>
-                                <option value="荣誉">🏆 荣誉</option>
-                                <option value="日常">📝 日常</option>
-                                <option value="其他">📌 其他</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                <div class="card mb-12"><div class="flex-between"><span class="card-title">📸 班级记录 · 班级朋友圈</span><div class="flex-wrap"><button class="btn btn-primary btn-sm" onclick="openClassRecordModal()">＋ 发布新记录</button><select id="recordTypeFilter" onchange="renderClassRecords()" style="padding:6px 12px;border-radius:16px;border:1.5px solid var(--border);font-size:12px;"><option value="all">全部类型</option><option value="活动">🎯 活动</option><option value="荣誉">🏆 荣誉</option><option value="日常">📝 日常</option><option value="其他">📌 其他</option></select></div></div></div>
                 <div id="classRecordList"></div>
             </div>
 
@@ -1654,28 +792,16 @@
                         </div>
                         <div id="contactLedgerList" class="contact-list"></div>
                     </div>
-                    <div class="contact-tab-content" id="tab-visit">
-                        <div class="flex-wrap mb-12"><button class="btn btn-primary btn-sm" onclick="openVisitModal()">＋ 新增家访</button></div>
-                        <div id="visitList" class="contact-list"></div>
-                    </div>
-                    <div class="contact-tab-content" id="tab-meeting">
-                        <div class="flex-wrap mb-12"><button class="btn btn-primary btn-sm" onclick="openMeetingModal()">＋ 新增家长会</button></div>
-                        <div id="meetingList" class="contact-list"></div>
-                    </div>
-                    <div class="contact-tab-content" id="tab-group">
-                        <div class="flex-wrap mb-12"><button class="btn btn-primary btn-sm" onclick="openGroupNoticeModal()">＋ 发布群通知</button></div>
-                        <div id="groupNoticeList" class="contact-list"></div>
-                    </div>
+                    <div class="contact-tab-content" id="tab-visit"><div class="flex-wrap mb-12"><button class="btn btn-primary btn-sm" onclick="openVisitModal()">＋ 新增家访</button></div><div id="visitList" class="contact-list"></div></div>
+                    <div class="contact-tab-content" id="tab-meeting"><div class="flex-wrap mb-12"><button class="btn btn-primary btn-sm" onclick="openMeetingModal()">＋ 新增家长会</button></div><div id="meetingList" class="contact-list"></div></div>
+                    <div class="contact-tab-content" id="tab-group"><div class="flex-wrap mb-12"><button class="btn btn-primary btn-sm" onclick="openGroupNoticeModal()">＋ 发布群通知</button></div><div id="groupNoticeList" class="contact-list"></div></div>
                 </div>
             </div>
 
-            <!-- ===== 通知公告（模板化） ===== -->
+            <!-- ===== 通知公告 ===== -->
             <div class="page" id="page-notices">
                 <div class="card mb-12">
-                    <div class="card-header">
-                        <span class="card-title">📢 班级通知工作台</span>
-                        <span class="text-muted" style="font-size:12px;">选择模板，一键生成可编辑的微信群消息</span>
-                    </div>
+                    <div class="card-header"><span class="card-title">📢 班级通知工作台</span><span class="text-muted" style="font-size:12px;">选择模板，一键生成可编辑的微信群消息</span></div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
                         <div>
                             <div style="margin-bottom:12px;">
@@ -1694,50 +820,27 @@
                                 <button class="btn-ghost btn-sm" onclick="editTemplate()" style="margin-left:8px;">✏️ 编辑模板</button>
                                 <button class="btn-ghost btn-sm" onclick="addNewTemplate()">＋ 新增模板</button>
                             </div>
-                            <div id="templateFields" style="background:#f8fafc;padding:16px;border-radius:8px;border:1px solid var(--border);">
-                                <p class="text-muted">请先选择模板</p>
-                            </div>
+                            <div id="templateFields" style="background:#f8fafc;padding:16px;border-radius:8px;border:1px solid var(--border);"><p class="text-muted">请先选择模板</p></div>
                             <button class="btn btn-primary" onclick="generateNotice()" style="margin-top:12px;width:100%;">🤖 生成可编辑初稿</button>
-                            <div style="margin-top:8px;text-align:center;">
-                                <button class="btn btn-sm btn-outline" onclick="generateNoticeWithAI()" style="background:var(--primary-light);border-color:var(--primary);color:var(--primary);">✨ AI 润色</button>
-                            </div>
+                            <div style="margin-top:8px;text-align:center;"><button class="btn btn-sm btn-outline" onclick="generateNoticeWithAI()" style="background:var(--primary-light);border-color:var(--primary);color:var(--primary);">✨ AI 润色</button></div>
                         </div>
                         <div>
                             <div style="background:#f8fafc;padding:16px;border-radius:8px;border:1px solid var(--border);min-height:400px;">
-                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                                    <span style="font-weight:600;">📱 微信群消息预览</span>
-                                    <div>
-                                        <button class="btn btn-sm btn-outline" onclick="copyNotice()">📋 复制</button>
-                                        <button class="btn btn-sm btn-primary" onclick="saveNotice()">💾 保存</button>
-                                    </div>
-                                </div>
-                                <div id="noticePreview" style="background:#fff;padding:16px;border-radius:6px;border:1px solid var(--border);min-height:300px;white-space:pre-wrap;font-size:14px;line-height:1.8;color:var(--text);">
-                                    左侧选择模板并填写信息后，点击「生成可编辑初稿」预览消息。
-                                </div>
-                                <div style="margin-top:12px;font-size:12px;color:var(--text-muted);text-align:center;">
-                                    💡 表情、重点信息和行动要求已分层，可继续直接修改
-                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-weight:600;">📱 微信群消息预览</span><div><button class="btn btn-sm btn-outline" onclick="copyNotice()">📋 复制</button><button class="btn btn-sm btn-primary" onclick="saveNotice()">💾 保存</button></div></div>
+                                <div id="noticePreview" style="background:#fff;padding:16px;border-radius:6px;border:1px solid var(--border);min-height:300px;white-space:pre-wrap;font-size:14px;line-height:1.8;color:var(--text);">左侧选择模板并填写信息后，点击「生成可编辑初稿」预览消息。</div>
+                                <div style="margin-top:12px;font-size:12px;color:var(--text-muted);text-align:center;">💡 表情、重点信息和行动要求已分层，可继续直接修改</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">📋 已保存通知</span>
-                        <span class="text-muted" id="savedNoticeCount">共 0 条</span>
-                    </div>
-                    <div id="savedNoticeList"></div>
-                </div>
+                <div class="card"><div class="card-header"><span class="card-title">📋 已保存通知</span><span class="text-muted" id="savedNoticeCount">共 0 条</span></div><div id="savedNoticeList"></div></div>
             </div>
 
             <!-- ===== 班级评价管理 ===== -->
             <div class="page" id="page-evaluation">
-                <div class="card mb-12">
-                    <div class="flex-between"><span class="card-title">⭐ 班级评价管理 · 从日常记录到成长报告</span><div class="flex-wrap"><span class="text-muted">记录总数 <strong style="color:var(--text);" id="evalTotal">0</strong> 条</span><button class="btn btn-sm btn-primary" onclick="openEvalRecord()">＋ 新建记录</button></div></div>
-                </div>
+                <div class="card mb-12"><div class="flex-between"><span class="card-title">⭐ 班级评价管理 · 从日常记录到成长报告</span><div class="flex-wrap"><span class="text-muted">记录总数 <strong style="color:var(--text);" id="evalTotal">0</strong> 条</span><button class="btn btn-sm btn-primary" onclick="openEvalRecord()">＋ 新建记录</button></div></div></div>
                 <div class="grid-2">
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">📊 评价维度分布</span></div>
+                    <div class="card"><div class="card-header"><span class="card-title">📊 评价维度分布</span></div>
                         <div style="display:flex;flex-direction:column;gap:6px;" id="evalDimBars">
                             <div><span>课堂表现</span> <span style="float:right;font-weight:700;" id="dim-classroom">—</span><div style="height:6px;background:#e2e8f0;border-radius:4px;margin-top:2px;"><div id="dim-bar-classroom" style="width:0%;height:100%;background:var(--primary);border-radius:4px;"></div></div></div>
                             <div><span>作业情况</span> <span style="float:right;font-weight:700;" id="dim-homework">—</span><div style="height:6px;background:#e2e8f0;border-radius:4px;margin-top:2px;"><div id="dim-bar-homework" style="width:0%;height:100%;background:var(--success);border-radius:4px;"></div></div></div>
@@ -1745,15 +848,9 @@
                             <div><span>活动参与</span> <span style="float:right;font-weight:700;" id="dim-activity">—</span><div style="height:6px;background:#e2e8f0;border-radius:4px;margin-top:2px;"><div id="dim-bar-activity" style="width:0%;height:100%;background:#8b5cf6;border-radius:4px;"></div></div></div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">📈 近7日记录趋势</span></div>
-                        <div class="eval-trend-chart"><canvas id="evalTrendChart"></canvas></div>
-                    </div>
+                    <div class="card"><div class="card-header"><span class="card-title">📈 近7日记录趋势</span></div><div class="eval-trend-chart"><canvas id="evalTrendChart"></canvas></div></div>
                 </div>
-                <div class="card mt-12">
-                    <div class="card-header"><span class="card-title">📋 最近评价记录</span></div>
-                    <div id="evalRecordList"></div>
-                </div>
+                <div class="card mt-12"><div class="card-header"><span class="card-title">📋 最近评价记录</span></div><div id="evalRecordList"></div></div>
             </div>
 
             <!-- ===== 数据管理 ===== -->
@@ -1787,24 +884,13 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- AI 配置 -->
                     <div style="background:#f8fafc;padding:20px;border-radius:var(--radius-sm);border:1px solid var(--border);margin-top:16px;">
                         <h4 style="margin-bottom:8px;">🤖 AI 大模型配置</h4>
                         <p class="text-muted" style="font-size:12px;margin-bottom:12px;">配置后，评语生成、试卷分析、通知润色将调用真实 AI</p>
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                            <div>
-                                <label style="font-size:12px;font-weight:600;">模型名称</label>
-                                <input id="aiModel" type="text" placeholder="如 qwen-plus" style="width:100%;padding:8px 12px;border-radius:6px;border:1px solid var(--border);">
-                            </div>
-                            <div>
-                                <label style="font-size:12px;font-weight:600;">API Key</label>
-                                <input id="aiApiKey" type="password" placeholder="可选，留空使用环境变量" style="width:100%;padding:8px 12px;border-radius:6px;border:1px solid var(--border);">
-                            </div>
-                            <div style="grid-column:1/-1;">
-                                <label style="font-size:12px;font-weight:600;">自定义 Base URL（可选）</label>
-                                <input id="aiBaseUrl" type="text" placeholder="默认 /api" style="width:100%;padding:8px 12px;border-radius:6px;border:1px solid var(--border);">
-                            </div>
+                            <div><label style="font-size:12px;font-weight:600;">模型名称</label><input id="aiModel" type="text" placeholder="如 qwen-plus" style="width:100%;padding:8px 12px;border-radius:6px;border:1px solid var(--border);"></div>
+                            <div><label style="font-size:12px;font-weight:600;">API Key</label><input id="aiApiKey" type="password" placeholder="可选，留空使用环境变量" style="width:100%;padding:8px 12px;border-radius:6px;border:1px solid var(--border);"></div>
+                            <div style="grid-column:1/-1;"><label style="font-size:12px;font-weight:600;">自定义 Base URL（可选）</label><input id="aiBaseUrl" type="text" placeholder="默认 /api" style="width:100%;padding:8px 12px;border-radius:6px;border:1px solid var(--border);"></div>
                         </div>
                         <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
                             <button class="btn btn-primary btn-sm" onclick="saveAIConfig()">💾 保存 AI 配置</button>
@@ -1820,37 +906,22 @@
 
             <!-- ===== 试卷分析 ===== -->
             <div class="page" id="page-exam-paper">
-                <div class="card mb-12">
-                    <div class="flex-between">
-                        <span class="card-title">📄 试卷分析 · 上传 Word 文档，AI 智能分析</span>
-                        <div class="flex-wrap">
-                            <button class="btn btn-primary btn-sm" onclick="document.getElementById('paperUpload').click()">📤 上传试卷 (Word)</button>
-                            <input type="file" id="paperUpload" accept=".docx" style="display:none" onchange="handlePaperUpload(event)">
-                            <button class="btn btn-sm btn-outline" onclick="analyzePaper()">🧠 AI 分析</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="card mb-12"><div class="flex-between"><span class="card-title">📄 试卷分析 · 上传 Word 文档，AI 智能分析</span><div class="flex-wrap"><button class="btn btn-primary btn-sm" onclick="document.getElementById('paperUpload').click()">📤 上传试卷 (Word)</button><input type="file" id="paperUpload" accept=".docx" style="display:none" onchange="handlePaperUpload(event)"><button class="btn btn-sm btn-outline" onclick="analyzePaper()">🧠 AI 分析</button></div></div></div>
                 <div class="card">
                     <div class="exam-paper-area" id="paperArea">
                         <div class="empty-state" style="padding:20px;"><span class="empty-icon">📄</span><h3>上传试卷文档</h3><p>支持 .docx 格式，AI 将提取题目并生成分析报告</p></div>
                         <div id="paperPreview" style="display:none;">
-                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                                <span id="paperFileName" style="font-weight:600;"></span>
-                                <button class="btn-ghost btn-sm" onclick="clearPaper()">清除</button>
-                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span id="paperFileName" style="font-weight:600;"></span><button class="btn-ghost btn-sm" onclick="clearPaper()">清除</button></div>
                             <div class="preview" id="paperContent"></div>
-                            <div id="paperAnalysis" style="margin-top:12px;padding:12px;background:#f0f7ff;border-radius:8px;border-left:4px solid var(--primary);">
-                                <strong>🧠 AI 分析结果：</strong>
-                                <div id="aiAnalysisResult" style="margin-top:6px;font-size:14px;line-height:1.6;">等待分析...</div>
-                            </div>
+                            <div id="paperAnalysis" style="margin-top:12px;padding:12px;background:#f0f7ff;border-radius:8px;border-left:4px solid var(--primary);"><strong>🧠 AI 分析结果：</strong><div id="aiAnalysisResult" style="margin-top:6px;font-size:14px;line-height:1.6;">等待分析...</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div><!-- /content-area -->
-    </div><!-- /main-content -->
-</div><!-- /app-container -->
+        </div>
+    </div>
+</div>
 
 <!-- ===== 模态框容器 ===== -->
 <div id="modalContainer"></div>
@@ -1861,8 +932,8 @@
 // ================================================================
 
 // ---------- Supabase 配置 ----------
-const SUPABASE_URL = 'https://empvdtlydzqwnglcavty.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVtcHZkdGx5ZHpxd25nbGNhdnR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5NjE2MzcsImV4cCI6MjEwMjUzNzYzN30.IQn47FzMkifrbxYg0jc4SJ5qAMhrW1yoIg8Wwel3afs';
+const SUPABASE_URL = 'https://wrnusorhmwhzseecjobu.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndybnVzb3JobXdoenNlZWNqb2J1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5Njk5MzQsImV4cCI6MjEwMjU0NTkzNH0.81_8-IUPPV2iJi0zwiE37NcjbQAnpv78ng1_SbIX6iU';
 
 if (!window.__supabaseClient) {
     window.__supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -1998,13 +1069,6 @@ function shuffleArray(arr) {
         [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
-}
-function adjustColor(hex, percent) {
-    let r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
-    r = Math.max(0, Math.min(255, r + percent));
-    g = Math.max(0, Math.min(255, g + percent));
-    b = Math.max(0, Math.min(255, b + percent));
-    return '#' + [r,g,b].map(c => c.toString(16).padStart(2,'0')).join('');
 }
 function getStudentTotalScore(sid, semester, exam) {
     const records = gradeRecords[semester]?.[exam]?.[sid] || {};
@@ -2523,7 +1587,6 @@ function updateBadges() {
 
 // ---------- 工作台统计 ----------
 function updateDashboardStats() {
-    // 使用安全辅助函数，避免 null 错误
     const setText = (id, val) => {
         const el = document.getElementById(id);
         if (el) el.textContent = val;
@@ -2532,20 +1595,16 @@ function updateDashboardStats() {
         const el = document.getElementById(id);
         if (el) el.style[prop] = val;
     };
-
-    // 基本数据
     setText('dashTotal', allStudents.length);
     const males = allStudents.filter(s => s.gender === '男').length;
     const females = allStudents.filter(s => s.gender === '女').length;
     setText('dashGender', '男生' + males + ' · 女生' + females);
-
     const today = document.getElementById('attendanceDate')?.value || new Date().toISOString().split('T')[0];
     const att = attendanceRecords[today] || {};
     const total = allStudents.length;
     const present = Object.values(att).filter(v => v === 'present' || v === 'late').length;
     setText('dashAttendance', total > 0 ? present : 0);
     setText('dashAttRate', total > 0 ? '出勤率 ' + Math.round(present/total*100) + '%' : '—');
-
     setText('dashHomework', homeworkList.length);
     const now = new Date();
     const startOfWeek = new Date(now);
@@ -2553,7 +1612,6 @@ function updateDashboardStats() {
     startOfWeek.setHours(0,0,0,0);
     const thisWeek = homeworkList.filter(h => new Date(h.assign_date) >= startOfWeek).length;
     setText('dashHomeworkWeek', '本周 ' + thisWeek + ' 次');
-
     const semester = document.getElementById('semesterSelect')?.value || '2026-2027第一学期';
     const exam = document.getElementById('examSelect')?.value || '月考1';
     const records = gradeRecords[semester]?.[exam] || {};
@@ -2567,11 +1625,7 @@ function updateDashboardStats() {
     setText('dashGrade', count > 0 ? (totalScore/count).toFixed(1) : '—');
     setText('dashGradeExam', count > 0 ? exam : '暂无考试');
     setText('dashPicked', pickedHistory.length);
-
-    // 待办
     renderTodos();
-
-    // 进度条（带安全检查）
     const totalHomework = homeworkList.length;
     const doneHomework = homeworkList.filter(h => {
         const subs = Object.values(h.submissions || {});
@@ -2580,16 +1634,12 @@ function updateDashboardStats() {
     const hwProgress = totalHomework > 0 ? Math.round(doneHomework/totalHomework*100) : 0;
     setStyle('progressHomework', 'width', hwProgress + '%');
     setText('progressHomeworkLabel', hwProgress + '%');
-
     const visitProgress = visits.length > 0 ? Math.min(100, Math.round(visits.length/allStudents.length*100)) : 0;
     setStyle('progressVisit', 'width', visitProgress + '%');
     setText('progressVisitLabel', visitProgress + '%');
-
     const pickProgress = allStudents.length > 0 ? Math.min(100, Math.round(pickedHistory.length/allStudents.length*100)) : 0;
     setStyle('progressPick', 'width', pickProgress + '%');
     setText('progressPickLabel', pickProgress + '%');
-
-    // 其他
     updateTimeline();
     renderMiniCalendar();
     renderWeekRecords();
@@ -3672,7 +2722,7 @@ function saveGrade() {
 }
 
 // ============================================================
-// 成绩导入（精简版）- 自动匹配学号/姓名，无需手动匹配
+// 成绩导入（精简版）- 自动匹配学号/姓名
 // ============================================================
 function handleGradeExcel(event) {
     const file = event.target.files[0];
@@ -3749,7 +2799,6 @@ function handleGradeExcel(event) {
                 }
             });
 
-            // 6. 显示结果
             renderGrades();
             autoSave();
 
@@ -3774,6 +2823,91 @@ function handleGradeExcel(event) {
         event.target.value = '';
     };
     reader.readAsArrayBuffer(file);
+}
+
+// ============================================================
+// 成绩分布图表
+// ============================================================
+function showGradeDistribution() {
+    const semester = document.getElementById('semesterSelect').value;
+    const exam = document.getElementById('examSelect').value;
+    const records = gradeRecords[semester]?.[exam] || {};
+    const scores = [];
+
+    allStudents.forEach(s => {
+        const sc = records[s.id] || {};
+        let total = 0, has = false;
+        gradeSubjects.forEach(sub => {
+            if (sc[sub] !== undefined) {
+                total += sc[sub];
+                has = true;
+            }
+        });
+        if (has) scores.push(total);
+    });
+
+    if (scores.length === 0) {
+        alert('暂无成绩数据，请先录入或导入成绩。');
+        return;
+    }
+
+    const bins = [0,0,0,0,0];
+    scores.forEach(sc => {
+        if (sc < 60) bins[0]++;
+        else if (sc < 70) bins[1]++;
+        else if (sc < 80) bins[2]++;
+        else if (sc < 90) bins[3]++;
+        else bins[4]++;
+    });
+
+    const labels = ['不及格', '60-69', '70-79', '80-89', '90-100'];
+    const colors = ['#e74c3c', '#f39c12', '#f1c40f', '#2ecc71', '#3498db'];
+
+    const html = `
+        <div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+            <div class="modal">
+                <h3>📊 成绩分布 · ${exam}</h3>
+                <div style="height:250px;position:relative;">
+                    <canvas id="gradeDistCanvas"></canvas>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" onclick="closeModal()">关闭</button>
+                </div>
+            </div>
+        </div>
+    `;
+    document.getElementById('modalContainer').innerHTML = html;
+
+    setTimeout(() => {
+        const canvas = document.getElementById('gradeDistCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (gradeDistChart) {
+            try { gradeDistChart.destroy(); } catch(e) {}
+        }
+        gradeDistChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '人数',
+                    data: bins,
+                    backgroundColor: colors
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stepSize: 1,
+                        ticks: { precision: 0 }
+                    }
+                }
+            }
+        });
+    }, 100);
 }
 
 // ---------- AI 配置 ----------
