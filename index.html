@@ -3670,101 +3670,113 @@ function saveGrade() {
     autoSave();
     alert('✅ 成绩已保存！');
 }
+
+// ============================================================
+// 成绩导入（精简版）- 自动匹配学号/姓名，无需手动匹配
+// ============================================================
 function handleGradeExcel(event) {
     const file = event.target.files[0];
     if (!file) return;
+
     const reader = new FileReader();
     reader.onload = function(e) {
         try {
             const data = new Uint8Array(e.target.result);
             const workbook = XLSX.read(data, { type: 'array' });
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
-            const json = XLSX.utils.sheet_to_json(sheet);
-            if (json.length === 0) { alert('Excel 为空'); return; }
+            const rows = XLSX.utils.sheet_to_json(sheet);
 
-            // 输出列名
-            const headers = Object.keys(json[0]);
-            console.log('📌 Excel 列名:', headers);
+            if (rows.length === 0) {
+                alert('❌ Excel 文件为空');
+                return;
+            }
+
+            console.log('📌 检测到列名:', Object.keys(rows[0]));
 
             const semester = document.getElementById('semesterSelect').value;
             const exam = document.getElementById('examSelect').value;
+
             if (!gradeRecords[semester]) gradeRecords[semester] = {};
             if (!gradeRecords[semester][exam]) gradeRecords[semester][exam] = {};
 
-            let matched = 0, unmatched = [];
+            let success = 0;
+            let failed = [];
 
-            json.forEach((row, index) => {
-                // 尝试多种方式提取学号
-                let sid = String(extractField(row, '学号')).trim();
-                let name = extractField(row, '姓名') || '';
+            rows.forEach((row, index) => {
+                // 1. 提取学号（优先）
+                let sid = String(extractField(row, '学号') || '').trim();
 
-                // 如果学号为空，尝试用姓名匹配
-                if (!sid && name) {
-                    const byName = allStudents.find(s => s.name === name);
-                    if (byName) {
-                        sid = byName.id;
-                        console.log('✅ 按姓名匹配成功:', name, '→', sid);
-                    } else {
-                        unmatched.push({ row, sid: '无', name: name });
-                        return;
+                // 2. 如果学号为空，尝试按姓名匹配
+                if (!sid) {
+                    const name = extractField(row, '姓名');
+                    if (name) {
+                        const found = allStudents.find(s => s.name === name);
+                        if (found) sid = found.id;
                     }
                 }
 
-                // 如果学号还是空，跳过
+                // 3. 如果还是没有匹配到，记录失败
                 if (!sid) {
-                    console.warn('⚠️ 第' + (index+1) + '行既无有效学号也无姓名，已跳过');
+                    failed.push({ row: index + 1, name: extractField(row, '姓名') || '未知' });
                     return;
                 }
 
-                // 验证学号存在
+                // 4. 验证学号是否存在
                 const student = allStudents.find(s => s.id === sid);
                 if (!student) {
-                    unmatched.push({ row, sid, name: name || sid });
+                    failed.push({ row: index + 1, name: extractField(row, '姓名') || sid, sid });
                     return;
                 }
 
-                // 录入成绩
-                if (!gradeRecords[semester][exam][sid]) gradeRecords[semester][exam][sid] = {};
-                let subjectCount = 0;
+                // 5. 录入成绩
+                if (!gradeRecords[semester][exam][sid]) {
+                    gradeRecords[semester][exam][sid] = {};
+                }
+
+                let hasScore = false;
                 gradeSubjects.forEach(sub => {
                     const val = parseFloat(extractField(row, sub));
                     if (!isNaN(val) && val >= 0 && val <= SUBJECT_FULL_MARKS[sub]) {
                         gradeRecords[semester][exam][sid][sub] = Math.round(val);
-                        subjectCount++;
+                        hasScore = true;
                     }
                 });
-                if (subjectCount > 0) {
-                    matched++;
-                    console.log('✅ 成功匹配:', student.name, '('+sid+')', '共录入', subjectCount, '科');
+
+                if (hasScore) {
+                    success++;
                 } else {
-                    unmatched.push({ row, sid, name: student.name, reason: '未找到任何科目成绩' });
+                    failed.push({ row: index + 1, name: student.name, sid, reason: '未找到有效成绩' });
                 }
             });
 
-            if (unmatched.length > 0) {
-                let msg = '⚠️ 有 ' + unmatched.length + ' 行数据未能自动匹配。\n';
-                unmatched.slice(0,10).forEach(u => {
-                    msg += '  • 姓名: ' + (u.name || '无') + ' | 学号: ' + (u.sid || '无') + (u.reason ? ' ('+u.reason+')' : '') + '\n';
-                });
-                if (unmatched.length > 10) msg += '  ... 还有 ' + (unmatched.length - 10) + ' 行\n';
-                msg += '\n是否手动匹配？点击「确定」打开匹配窗口。';
-                if (confirm(msg)) {
-                    openManualMatchModal(unmatched, semester, exam);
-                    return;
-                }
-            }
-
+            // 6. 显示结果
             renderGrades();
             autoSave();
-            alert('✅ 成功导入 ' + matched + ' 名学生的成绩！' + (unmatched.length > 0 ? '\n⚠️ ' + unmatched.length + ' 行未能匹配，已忽略' : ''));
-        } catch(err) {
-            alert('解析 Excel 失败：' + err.message);
+
+            let msg = '✅ 成功导入 ' + success + ' 名学生的成绩！';
+            if (failed.length > 0) {
+                msg += '\n\n⚠️ 以下 ' + failed.length + ' 行未能导入：\n';
+                failed.slice(0, 10).forEach(f => {
+                    msg += '  • 第 ' + f.row + ' 行';
+                    if (f.name) msg += ' | 姓名: ' + f.name;
+                    if (f.sid) msg += ' | 学号: ' + f.sid;
+                    if (f.reason) msg += ' (' + f.reason + ')';
+                    msg += '\n';
+                });
+                if (failed.length > 10) msg += '  ... 还有 ' + (failed.length - 10) + ' 行';
+            }
+            alert(msg);
+
+        } catch (err) {
+            alert('❌ 解析失败：' + err.message);
             console.error(err);
         }
         event.target.value = '';
     };
     reader.readAsArrayBuffer(file);
-}// ---------- AI 配置 ----------
+}
+
+// ---------- AI 配置 ----------
 function loadAIConfig() {
     if (!appData) { appData = {}; }
     if (!appData.aiConfig) { appData.aiConfig = { provider:'qwen', model:'qwen-plus', apiKey:'', baseUrl:'', enabled:false }; }
@@ -4840,8 +4852,6 @@ window.renderGrades = renderGrades;
 window.openGradeModal = openGradeModal;
 window.saveGrade = saveGrade;
 window.handleGradeExcel = handleGradeExcel;
-window.openManualMatchModal = openManualMatchModal;
-window.applyManualMatch = applyManualMatch;
 window.showGradeDistribution = showGradeDistribution;
 window.loadAIConfig = loadAIConfig;
 window.saveAIConfig = saveAIConfig;
