@@ -1067,6 +1067,7 @@
 
 <!-- ===== 模态框容器 ===== -->
 <div id="modalContainer"></div>
+
 <script>
 // ================================================================
 // WorkBuddy Pro 云端版 - 完整 JavaScript
@@ -4124,65 +4125,25 @@ function addNewTemplate() {
 // ---------- 班级评价 ----------
 const evalDimensions = ['课堂表现','作业情况','行为习惯','活动参与'];
 function updateEvalStats() {
-    document.getElementById('evalTotal').textContent = evalRecords.length;
+    const totalEl = document.getElementById('evalTotal');
+    if (totalEl) totalEl.textContent = evalRecords.length;
+
     const dimCounts = {};
     evalDimensions.forEach(d => dimCounts[d] = 0);
     evalRecords.forEach(r => { if (r.dim && dimCounts[r.dim] !== undefined) dimCounts[r.dim]++; });
     const maxCount = Math.max(1, ...Object.values(dimCounts));
+
     evalDimensions.forEach(d => {
         const count = dimCounts[d] || 0;
         const pct = Math.round((count / maxCount) * 100);
-        document.getElementById('dim-' + d.toLowerCase().replace(' ','-')).textContent = count;
-        const bar = document.getElementById('dim-bar-' + d.toLowerCase().replace(' ','-'));
-        if (bar) bar.style.width = pct + '%';
+        const textEl = document.getElementById('dim-' + d.toLowerCase().replace(' ', '-'));
+        if (textEl) textEl.textContent = count;
+        const barEl = document.getElementById('dim-bar-' + d.toLowerCase().replace(' ', '-'));
+        if (barEl) barEl.style.width = pct + '%';
     });
+
     updateEvalTrendChart();
     renderEvalRecords();
-}
-function updateEvalTrendChart() {
-    const now = new Date();
-    const days = [];
-    for (let i = 6; i >= 0; i--) {
-        const d = new Date(now);
-        d.setDate(d.getDate() - i);
-        days.push(d.toISOString().split('T')[0]);
-    }
-    const counts = days.map(date => evalRecords.filter(r => r.date === date).length);
-    const canvas = document.getElementById('evalTrendChart');
-    if (canvas) {
-        if (evalTrendChart) { try { evalTrendChart.destroy(); } catch(e) {} }
-        const ctx = canvas.getContext('2d');
-        evalTrendChart = new Chart(ctx, {
-            type:'bar',
-            data:{ labels:['一','二','三','四','五','六','日'], datasets:[{ label:'评价记录数', data:counts, backgroundColor:'rgba(59,140,255,0.7)' }] },
-            options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, stepSize:1 } } }
-        });
-    }
-}
-function renderEvalRecords() {
-    const container = document.getElementById('evalRecordList');
-    if (evalRecords.length === 0) { container.innerHTML = '<div class="empty-state" style="padding:20px;"><p class="text-muted">暂无评价记录</p></div>'; return; }
-    const sorted = [...evalRecords].sort((a,b) => new Date(b.date) - new Date(a.date));
-    container.innerHTML = sorted.slice(0,10).map(r => { const student = allStudents.find(s => s.id === r.student_id); return '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f3f8;align-items:center;"><div><strong>' + (student ? student.name : r.student_id) + '</strong> · ' + (r.dim || '未分类') + ' · ' + r.content + '</div><div style="font-size:12px;color:var(--text-light);">' + r.date + ' <button class="btn-ghost btn-sm" onclick="deleteEvalRecord(\'' + r.id + '\')">删除</button></div></div>'; }).join('');
-}
-function openEvalRecord() {
-    const html = '<div class="modal-overlay" onclick="if(event.target===this)closeModal()"><div class="modal"><h3>⭐ 新建评价记录</h3><div class="form-group"><label>学生</label><select id="evalStudent">' + allStudents.map(s => '<option value="' + s.id + '">' + s.name + '</option>').join('') + '</select></div><div class="form-group"><label>评价维度</label><select id="evalDim">' + evalDimensions.map(d => '<option>' + d + '</option>').join('') + '</select></div><div class="form-group"><label>评价内容</label><textarea id="evalContent" rows="3" placeholder="具体评价..."></textarea></div><div class="form-group"><label>日期</label><input type="date" id="evalDate" value="' + new Date().toISOString().split('T')[0] + '"></div><div class="modal-actions"><button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-primary" onclick="saveEvalRecord()">保存</button></div></div></div>';
-    document.getElementById('modalContainer').innerHTML = html;
-}
-function saveEvalRecord() {
-    const sid = document.getElementById('evalStudent').value;
-    const dim = document.getElementById('evalDim').value;
-    const content = document.getElementById('evalContent').value.trim();
-    const date = document.getElementById('evalDate').value;
-    if (!sid || !content) { alert('请填写完整信息'); return; }
-    evalRecords.push({ id: generateId(), student_id: sid, dim, content, date });
-    closeModal();
-    updateEvalStats();
-    autoSave();
-    alert('✅ 评价记录已添加！');
-}
-function deleteEvalRecord(id) {
-    if (confirm('删除该评价记录？')) { evalRecords = evalRecords.filter(r => r.id !== id); updateEvalStats(); autoSave(); }
 }
 
 // ---------- 数据管理 ----------
