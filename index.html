@@ -6360,7 +6360,7 @@ function renderProfileCharts(sid) {
 function refreshProfileCharts() {
     allStudents.forEach(s => {
         if (profileCharts['radar-' + s.id]) {
-            try { profileCharts['radar-' + s.id'].destroy(); } catch(e) {}
+            try { profileCharts['radar-' + s.id].destroy(); } catch(e) {}
             delete profileCharts['radar-' + s.id];
         }
         if (profileCharts['trend-' + s.id]) {
