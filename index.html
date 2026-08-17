@@ -2721,9 +2721,6 @@ function saveGrade() {
     alert('✅ 成绩已保存！');
 }
 
-// ============================================================
-// 成绩导入（精简版）- 自动匹配学号/姓名
-// ============================================================
 function handleGradeExcel(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -2741,8 +2738,71 @@ function handleGradeExcel(event) {
                 return;
             }
 
-            console.log('📌 检测到列名:', Object.keys(rows[0]));
+            // ----- 1. 获取所有列名并做标准化处理 -----
+            const rawHeaders = Object.keys(rows[0]);
+            // 构建列名映射：小写 + 去空格 -> 原始列名
+            const headerMap = {};
+            rawHeaders.forEach(h => {
+                const key = h.trim().toLowerCase().replace(/\s+/g, '');
+                headerMap[key] = h;
+            });
 
+            console.log('📌 检测到列名:', rawHeaders);
+            console.log('📌 标准化后的列名映射:', headerMap);
+
+            // ----- 2. 自动识别关键列 -----
+            // 学号：优先匹配 '学号', '编号', 'id', '序号' 等
+            const idCandidates = ['学号', '编号', 'id', '序号', '学生编号', '学籍号'];
+            let idCol = null;
+            for (let cand of idCandidates) {
+                const key = cand.toLowerCase().replace(/\s+/g, '');
+                if (headerMap[key]) {
+                    idCol = headerMap[key];
+                    break;
+                }
+            }
+            // 姓名：匹配 '姓名', '名字', 'name'
+            const nameCandidates = ['姓名', '名字', 'name'];
+            let nameCol = null;
+            for (let cand of nameCandidates) {
+                const key = cand.toLowerCase().replace(/\s+/g, '');
+                if (headerMap[key]) {
+                    nameCol = headerMap[key];
+                    break;
+                }
+            }
+
+            // 科目列：匹配各科目名（语文、数学、英语...）
+            const subjectCols = {};
+            gradeSubjects.forEach(sub => {
+                // 尝试精确匹配，也尝试包含关键字（如“语文成绩”）
+                const key = sub.toLowerCase().replace(/\s+/g, '');
+                let found = null;
+                for (let h of rawHeaders) {
+                    const hKey = h.trim().toLowerCase().replace(/\s+/g, '');
+                    if (hKey === key || hKey.includes(key)) {
+                        found = h;
+                        break;
+                    }
+                }
+                if (found) subjectCols[sub] = found;
+            });
+
+            // ----- 3. 检查必要列是否存在 -----
+            if (!idCol && !nameCol) {
+                alert('❌ 未找到“学号”或“姓名”列，请确保 Excel 包含其中一列。\n检测到的列名：' + rawHeaders.join(', '));
+                return;
+            }
+            if (Object.keys(subjectCols).length === 0) {
+                alert('❌ 未找到任何科目列（语文、数学等），请检查列名。\n检测到的列名：' + rawHeaders.join(', '));
+                return;
+            }
+
+            console.log('✅ 识别到的学号列:', idCol);
+            console.log('✅ 识别到的姓名列:', nameCol);
+            console.log('✅ 识别到的科目列:', subjectCols);
+
+            // ----- 4. 开始解析数据 -----
             const semester = document.getElementById('semesterSelect').value;
             const exam = document.getElementById('examSelect').value;
 
@@ -2753,42 +2813,44 @@ function handleGradeExcel(event) {
             let failed = [];
 
             rows.forEach((row, index) => {
-                // 1. 提取学号（优先）
-                let sid = String(extractField(row, '学号') || '').trim();
-
-                // 2. 如果学号为空，尝试按姓名匹配
-                if (!sid) {
-                    const name = extractField(row, '姓名');
+                // 提取学号
+                let sid = '';
+                if (idCol) {
+                    sid = String(row[idCol] || '').trim();
+                }
+                // 如果学号为空，尝试用姓名匹配
+                if (!sid && nameCol) {
+                    const name = String(row[nameCol] || '').trim();
                     if (name) {
                         const found = allStudents.find(s => s.name === name);
                         if (found) sid = found.id;
                     }
                 }
 
-                // 3. 如果还是没有匹配到，记录失败
                 if (!sid) {
-                    failed.push({ row: index + 1, name: extractField(row, '姓名') || '未知' });
+                    failed.push({ row: index + 1, name: nameCol ? String(row[nameCol] || '').trim() : '未知' });
                     return;
                 }
 
-                // 4. 验证学号是否存在
                 const student = allStudents.find(s => s.id === sid);
                 if (!student) {
-                    failed.push({ row: index + 1, name: extractField(row, '姓名') || sid, sid });
+                    failed.push({ row: index + 1, name: nameCol ? String(row[nameCol] || '').trim() : sid, sid });
                     return;
                 }
 
-                // 5. 录入成绩
                 if (!gradeRecords[semester][exam][sid]) {
                     gradeRecords[semester][exam][sid] = {};
                 }
 
                 let hasScore = false;
                 gradeSubjects.forEach(sub => {
-                    const val = parseFloat(extractField(row, sub));
-                    if (!isNaN(val) && val >= 0 && val <= SUBJECT_FULL_MARKS[sub]) {
-                        gradeRecords[semester][exam][sid][sub] = Math.round(val);
-                        hasScore = true;
+                    const col = subjectCols[sub];
+                    if (col) {
+                        const val = parseFloat(row[col]);
+                        if (!isNaN(val) && val >= 0 && val <= SUBJECT_FULL_MARKS[sub]) {
+                            gradeRecords[semester][exam][sid][sub] = Math.round(val);
+                            hasScore = true;
+                        }
                     }
                 });
 
@@ -2825,7 +2887,6 @@ function handleGradeExcel(event) {
     reader.readAsArrayBuffer(file);
 }
 
-// ============================================================
 // 成绩分布图表
 // ============================================================
 function showGradeDistribution() {
