@@ -6364,8 +6364,8 @@ function refreshProfileCharts() {
             delete profileCharts['radar-' + s.id];
         }
         if (profileCharts['trend-' + s.id]) {
-            try { profileCharts['trend-' + s.id'].destroy(); } catch(e) {}
-            delete profileCharts['trend-' + s.id'];
+            try { profileCharts['trend-' + s.id].destroy(); } catch(e) {}
+            delete profileCharts['trend-' + s.id];
         }
     });
     renderProfile();
